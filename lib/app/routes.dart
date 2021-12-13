@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sv_rms_mobile/ui/add_technician/add_technician_screen.dart';
 import 'package:sv_rms_mobile/ui/authentication/login_screen.dart';
@@ -9,9 +8,17 @@ import 'package:sv_rms_mobile/ui/complaints/complaints_screen.dart';
 import 'package:sv_rms_mobile/ui/complaints/file_complaint_screen.dart';
 import 'package:sv_rms_mobile/ui/home/home_screen.dart';
 import 'package:sv_rms_mobile/ui/home/home_store.dart';
+import 'package:sv_rms_mobile/ui/how_it_works/how_it_works_screen.dart';
 import 'package:sv_rms_mobile/ui/invoices/invoices_screen.dart';
 import 'package:sv_rms_mobile/ui/invoices/invoices_store.dart';
+import 'package:sv_rms_mobile/ui/payment_details/payment_details_screen.dart';
+import 'package:sv_rms_mobile/ui/profile_details/about_me/about_me_screen.dart';
+import 'package:sv_rms_mobile/ui/profile_details/my_attachments/my_attachments_screen.dart';
+import 'package:sv_rms_mobile/ui/profile_details/my_payments/my_payments_screen.dart';
+import 'package:sv_rms_mobile/ui/profile_details/my_tools/my_tools_screen.dart';
+import 'package:sv_rms_mobile/ui/profile_details/others/others_screen.dart';
 import 'package:sv_rms_mobile/ui/project_details/project_details_screen.dart';
+import 'package:sv_rms_mobile/ui/settings/settings_screen.dart';
 import 'package:sv_rms_mobile/ui/splash_screen/splash_screen.dart';
 import 'package:sv_rms_mobile/ui/technician_details/technician_details_screen.dart';
 import 'package:sv_rms_mobile/ui/technicians/technician_screen.dart';
@@ -77,6 +84,40 @@ Route<dynamic>? generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const BidNowScreen(),
       );
+    case PaymentDetailsScreen.route:
+      return MaterialPageRoute(
+        builder: (context) => const PaymentDetailsScreen(),
+      );
+    case HowItWorksScreen.route:
+      return MaterialPageRoute(
+        builder: (context) => const HowItWorksScreen(),
+      );
+    case SettingsScreen.route:
+      return MaterialPageRoute(
+        builder: (context) => const SettingsScreen(),
+      );
+
+  case AboutMeScreen.route:
+      return MaterialPageRoute(
+        builder: (context) => const AboutMeScreen(),
+      );
+      case MyAttachmentsScreen.route:
+      return MaterialPageRoute(
+        builder: (context) => const MyAttachmentsScreen(),
+      );
+      case MyPaymentsScreen.route:
+      return MaterialPageRoute(
+        builder: (context) => const MyPaymentsScreen(),
+      );
+      case MyToolsScreen.route:
+      return MaterialPageRoute(
+        builder: (context) => const MyToolsScreen(),
+      );
+      case OthersScreen.route:
+      return MaterialPageRoute(
+        builder: (context) => const OthersScreen(),
+      );
+
     default:
       return MaterialPageRoute(
         builder: (context) => HomeScreen(

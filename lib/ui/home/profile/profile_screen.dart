@@ -1,4 +1,3 @@
-import 'package:animations/animations.dart';
 import 'package:cupertino_rounded_corners/cupertino_rounded_corners.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +5,11 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:sv_rms_mobile/app/config_store.dart';
 import 'package:sv_rms_mobile/ui/home/home_store.dart';
+import 'package:sv_rms_mobile/ui/profile_details/about_me/about_me_screen.dart';
+import 'package:sv_rms_mobile/ui/profile_details/my_attachments/my_attachments_screen.dart';
+import 'package:sv_rms_mobile/ui/profile_details/my_payments/my_payments_screen.dart';
+import 'package:sv_rms_mobile/ui/profile_details/my_tools/my_tools_screen.dart';
+import 'package:sv_rms_mobile/ui/profile_details/others/others_screen.dart';
 import 'package:sv_rms_mobile/utils/app_theme.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -20,6 +24,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  bool _smsNotificationOn = true;
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
@@ -87,58 +92,396 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const SizedBox(height: 12),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 8.0),
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Material(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      "Location",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Luanda, Angola",
+                                      style: TextStyle(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      "Rating",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      "4 out of 5",
+                                      style: TextStyle(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Divider(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      "Employee Status",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Freelancer",
+                                      style: TextStyle(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      "Availability",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      "24/7",
+                                      style: TextStyle(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Divider(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      "Text Number",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      "+92 4564 5445 24",
+                                      style: TextStyle(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      "Registration Date",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      "2020-05-10",
+                                      style: TextStyle(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Material(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: const [
+                                    Text(
+                                      "Working experience",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      "1 Year, 02 Months",
+                                      style: TextStyle(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Divider(
+                            height: 36,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      "Languages",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      "English Level 1",
+                                      style: TextStyle(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      "Interested In",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Full Time Role",
+                                      style: TextStyle(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Material(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: const Text(
+                                  "Skill Name",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.2,
+                                child: const Text(
+                                  "Level",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Divider(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: const Text(
+                                  "Desk Side Support",
+                                  style: TextStyle(),
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.2,
+                                child: const Text(
+                                  "L2",
+                                  style: TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Divider(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: const Text(
+                                  "Mobile App Testing",
+                                  style: TextStyle(),
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.2,
+                                child: const Text(
+                                  "L3",
+                                  style: TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Divider(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: const Text(
+                                  "Python and Debug",
+                                  style: TextStyle(),
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.2,
+                                child: const Text(
+                                  "L2",
+                                  style: TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: Material(
                     color: Theme.of(context).cardColor,
                     clipBehavior: Clip.hardEdge,
                     shape: SquircleBorder(radius: BorderRadius.circular(18)),
-                    child: Row(
+                    child: Column(
                       children: [
-                        CustomTabBarItem(
-                          title: "Persoal",
-                          index: 0,
-                          store: widget.homeScreenStore,
+                        ProfileTile(
+                          title: "About",
+                          onTap: () {
+                            Navigator.pushNamed(context, AboutMeScreen.route);
+                          },
+                          icon: Icons.person_pin,
                         ),
-                        CustomTabBarItem(
+                        const Divider(height: 1),
+                        ProfileTile(
                           title: "Attachments",
-                          index: 1,
-                          store: widget.homeScreenStore,
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, MyAttachmentsScreen.route);
+                          },
+                          icon: Icons.attachment_rounded,
                         ),
-                        CustomTabBarItem(
-                          title: "Settings",
-                          index: 2,
-                          store: widget.homeScreenStore,
+                        const Divider(height: 1),
+                        ProfileTile(
+                          title: "Tools",
+                          onTap: () {
+                            Navigator.pushNamed(context, MyToolsScreen.route);
+                          },
+                          icon: Icons.radar,
+                        ),
+                        const Divider(height: 1),
+                        ProfileTile(
+                          title: "Payments",
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, MyPaymentsScreen.route);
+                          },
+                          icon: Icons.payment,
+                        ),
+                        const Divider(height: 1),
+                        ProfileTile(
+                          title: "Others",
+                          onTap: () {
+                            Navigator.pushNamed(context, OthersScreen.route);
+                          },
+                          icon: Icons.devices_other,
+                        ),
+                        const Divider(height: 1),
+                        ProfileTile(
+                          title: "Sms Notifications",
+                          onTap: () {},
+                          icon: Icons.sms,
+                          trailing: CupertinoSwitch(
+                            value: _smsNotificationOn,
+                            onChanged: (change) {
+                              setState(() {
+                                _smsNotificationOn = change;
+                              });
+                            },
+                          ),
+                        ),
+                        const Divider(height: 1),
+                        ProfileTile(
+                          title: "Change Password",
+                          onTap: () {},
+                          icon: Icons.lock,
+                        ),
+                        const Divider(height: 1),
+                        ProfileTile(
+                          title: "Logout",
+                          onTap: () {},
+                          icon: Icons.logout,
                         ),
                       ],
                     ),
                   ),
-                ),
-                PageTransitionSwitcher(
-                  reverse: false,
-                  transitionBuilder: (Widget child1,
-                      Animation<double> animation,
-                      Animation<double> secondaryAnimation) {
-                    return SharedAxisTransition(
-                      fillColor: Colors.transparent,
-                      animation: animation,
-                      secondaryAnimation: secondaryAnimation,
-                      transitionType: SharedAxisTransitionType.vertical,
-                      child: child1,
-                    );
-                  },
-                  child: getProfileView(widget.homeScreenStore.profileTabIndex),
-                ),
-                // AnimatedSwitcher(
-                //   duration: const Duration(milliseconds: 200),
-                //   reverseDuration: const Duration(milliseconds: 1),
-                //   transitionBuilder: (child, animation) {
-                //     return FadeTransition(
-                //       opacity: animation,
-                //       child: child,
-                //     );
-                //   },
-                //   child: getProfileView(widget.homeScreenStore.profileTabIndex),
-                // )
+                )
               ],
             ),
           ),
@@ -150,7 +493,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget getProfileView(int index) {
     Widget _widget = Container();
     if (index == 0) {
-      _widget = const CommonSection();
+      _widget = const PersonalSection();
     } else if (index == 1) {
       _widget = const AttachmentsSection();
     } else if (index == 2) {
@@ -160,14 +503,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
-class CommonSection extends StatefulWidget {
-  const CommonSection({Key? key}) : super(key: key);
+class PersonalSection extends StatefulWidget {
+  const PersonalSection({Key? key}) : super(key: key);
 
   @override
-  _CommonSectionState createState() => _CommonSectionState();
+  _PersonalSectionState createState() => _PersonalSectionState();
 }
 
-class _CommonSectionState extends State<CommonSection> {
+class _PersonalSectionState extends State<PersonalSection> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -179,37 +522,39 @@ class _CommonSectionState extends State<CommonSection> {
         child: Column(
           children: [
             ProfileTile(
-              title: "Edit Profile",
+              title: "About",
               onTap: () {},
               icon: Icons.person_pin,
             ),
             const Divider(height: 1),
             ProfileTile(
-              title: "My Address",
+              title: "Attachments",
               onTap: () {},
               icon: Icons.location_pin,
             ),
             const Divider(height: 1),
             ProfileTile(
-              title: "Saved Services",
+              title: "Tools",
               onTap: () {},
               icon: Icons.bookmark,
             ),
             const Divider(height: 1),
             ProfileTile(
-              title: "Notification",
+              title: "Payments",
               onTap: () {},
-              icon: Icons.notifications_active_rounded,
-              trailing: CupertinoSwitch(
-                value: true,
-                onChanged: (newVal) {},
-              ),
+              icon: Icons.share_rounded,
             ),
             const Divider(height: 1),
             ProfileTile(
-              title: "Invite Friends",
+              title: "Others",
               onTap: () {},
-              icon: Icons.share_rounded,
+              icon: Icons.logout,
+            ),
+            const Divider(height: 1),
+            ProfileTile(
+              title: "Change Password",
+              onTap: () {},
+              icon: Icons.logout,
             ),
             const Divider(height: 1),
             ProfileTile(
@@ -344,69 +689,7 @@ class _SettingsSectionState extends State<SettingsSection> {
         color: Theme.of(context).cardColor,
         clipBehavior: Clip.hardEdge,
         shape: SquircleBorder(radius: BorderRadius.circular(18)),
-        child: Column(
-          children: [
-            ProfileTile(
-              title: "Language",
-              onTap: () {},
-              icon: Icons.language_outlined,
-              trailing: Row(
-                children: const [
-                  Text(
-                    "English",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios_outlined,
-                    size: 18,
-                  )
-                ],
-              ),
-            ),
-            const Divider(height: 1),
-            ProfileTile(
-              title: "Dark mode",
-              onTap: () {},
-              icon: Icons.nightlight_round,
-              trailing: CupertinoSwitch(
-                value: darkMode,
-                onChanged: (change) {
-                  setState(() {
-                    darkMode = change;
-                  });
-                  _configStore.setThemeMode(change);
-                },
-              ),
-            ),
-            const Divider(height: 1),
-            ProfileTile(
-              title: "Rate App",
-              onTap: () {},
-              icon: Icons.rate_review,
-            ),
-            const Divider(height: 1),
-            ProfileTile(
-              title: "Help Center",
-              onTap: () {},
-              icon: Icons.help,
-            ),
-            const Divider(height: 1),
-            ProfileTile(
-              title: "Privacy Policy",
-              onTap: () {},
-              icon: Icons.privacy_tip_rounded,
-            ),
-            const Divider(height: 1),
-            ProfileTile(
-              title: "Contact Us",
-              onTap: () {},
-              icon: Icons.contact_phone_rounded,
-            ),
-          ],
-        ),
+        child: Column(),
       ),
     );
   }

@@ -1,11 +1,7 @@
-import 'dart:ui';
 
 import 'package:cupertino_rounded_corners/cupertino_rounded_corners.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:sv_rms_mobile/ui/bid_now/bid_now_screen.dart';
 
 class ProjectDetailsScreen extends StatefulWidget {

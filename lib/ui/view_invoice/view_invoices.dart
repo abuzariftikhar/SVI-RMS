@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sv_rms_mobile/ui/payment_details/payment_details_screen.dart';
 import 'package:sv_rms_mobile/ui/view_invoice/widgets/view_invoice_tile.dart';
 
 class ViewInvoicesScreen extends StatefulWidget {
@@ -109,6 +110,38 @@ class _ViewInvoicesScreenState extends State<ViewInvoicesScreen> {
                       const ViewInvoiceTile(
                         label: "Travel Expense",
                         description: "None",
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.3,
+                              child: const Text(
+                                "Choose Travel & Purchase Expense",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, PaymentDetailsScreen.route);
+                              },
+                              child: const Text(
+                                "View Payment Details",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

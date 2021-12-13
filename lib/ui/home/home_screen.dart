@@ -1,11 +1,6 @@
 import 'package:animations/animations.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:provider/provider.dart';
-import 'package:sv_rms_mobile/app/config_store.dart';
 import 'package:sv_rms_mobile/ui/complaints/complaints_screen.dart';
 import 'package:sv_rms_mobile/ui/home/dashboard/dashboard_screen.dart';
 import 'package:sv_rms_mobile/ui/home/manage_bids/manage_bids_store.dart';
@@ -13,7 +8,9 @@ import 'package:sv_rms_mobile/ui/home/notifications/notifications_screen.dart';
 import 'package:sv_rms_mobile/ui/home/profile/profile_screen.dart';
 import 'package:sv_rms_mobile/ui/home/projects/project_screen.dart';
 import 'package:sv_rms_mobile/ui/home/projects/project_screen_store.dart';
+import 'package:sv_rms_mobile/ui/how_it_works/how_it_works_screen.dart';
 import 'package:sv_rms_mobile/ui/invoices/invoices_screen.dart';
+import 'package:sv_rms_mobile/ui/settings/settings_screen.dart';
 import 'package:sv_rms_mobile/ui/technicians/technician_screen.dart';
 import 'package:sv_rms_mobile/utils/icons/custom_icons_icons.dart';
 
@@ -32,14 +29,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final ConfigStore _configStore;
-  late bool darkMode;
-  @override
-  void initState() {
-    super.initState();
-    _configStore = Provider.of<ConfigStore>(context, listen: false);
-    darkMode = _configStore.isDarkMode ?? false;
-  }
+  
 
   Widget getHomeView(int index) {
     switch (index) {
@@ -178,6 +168,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, ComplaintsScreen.route);
+                },
+              ),
+              const Divider(height: 0, color: Colors.blueGrey),
+              ListTile(
+                title: const Text("How it Works"),
+                leading: const Icon(CustomIcons.fi_rr_database),
+                trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 16),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, HowItWorksScreen.route);
+                },
+              ),
+              const Divider(height: 0, color: Colors.blueGrey),
+              ListTile(
+                title: const Text("App Settings"),
+                leading: const Icon(CustomIcons.fi_rr_settings),
+                trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 16),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, SettingsScreen.route);
                 },
               ),
               const Divider(height: 0, color: Colors.blueGrey),

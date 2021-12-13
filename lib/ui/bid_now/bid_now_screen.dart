@@ -1,8 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:sv_rms_mobile/utils/app_theme.dart';
 
 class BidNowScreen extends StatefulWidget {
@@ -15,6 +12,12 @@ class BidNowScreen extends StatefulWidget {
 }
 
 class _BidNowScreenState extends State<BidNowScreen> {
+  String icValue = "None";
+  List<String> icList = [
+    "None",
+    "IC Approved",
+    "IC Germany",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -200,35 +203,76 @@ class _BidNowScreenState extends State<BidNowScreen> {
                     vertical: 16.0,
                     horizontal: 16.0,
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.3,
-                        child: const Text(
-                          "Add \nMore IC",
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: DropdownButton<String>(
+                              itemHeight: 72,
+                              icon: const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Icon(Icons.arrow_drop_down),
+                              ),
+                              alignment: Alignment.centerLeft,
+                              elevation: 1,
+                              isExpanded: true,
+                              borderRadius: BorderRadius.circular(4),
+                              onChanged: (cValue) {
+                                setState(() {
+                                  icValue = cValue!;
+                                });
+                              },
+                              underline: Container(
+                                height: 64,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.grey.withOpacity(0.6),
+                                    ),
+                                    borderRadius: BorderRadius.circular(6)),
+                              ),
+                              value: icValue,
+                              hint: const Text("Payment Type"),
+                              items: icList.map(
+                                (String item) {
+                                  return DropdownMenuItem<String>(
+                                    child: SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.8,
+                                      height: 56,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: Text(item),
+                                      ),
+                                    ),
+                                    value: item,
+                                  );
+                                },
+                              ).toList(),
+                            ),
                           ),
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      ElevatedButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                        ),
-                        label: const Text(
-                          "ADD IC",
-                          style: TextStyle(
-                            color: Colors.white,
+                          const SizedBox(width: 12),
+                          ElevatedButton.icon(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
+                            label: const Text(
+                              "ADD IC",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
@@ -311,6 +355,13 @@ class _BidPramsTileState extends State<BidPramsTile> {
         delegate: SliverChildListDelegate(
           [
             widget.isRemoveable
+                ? Divider(
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.black54
+                        : Colors.white54,
+                  )
+                : Container(),
+            widget.isRemoveable
                 ? Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: Row(
@@ -383,6 +434,34 @@ class _BidPramsTileState extends State<BidPramsTile> {
               ).toList(),
             ),
             const SizedBox(height: 8),
+            paymentTypeValue == "To me & Tech Separately" && widget.isRemoveable
+                ? Column(
+                    children: [
+                      TextField(
+                        controller: callOutRateController,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                          label: Text("My Service Charges %"),
+                          hintText:
+                              "Call out rate is as per the booking type mentioned ablove",
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      TextField(
+                        controller: callOutRateController,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                          label: Text("Technician Service Charges %"),
+                          hintText:
+                              "Call out rate is as per the booking type mentioned ablove",
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                    ],
+                  )
+                : Container(),
             TextField(
               controller: callOutRateController,
               keyboardType: TextInputType.number,
