@@ -1,0 +1,138 @@
+Date : 2021-12-14 04:41:42
+Directory : /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib
+Total : 69 files,  9905 codes, 234 comments, 450 blanks, all 10589 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Dart     |         67 |      9,755 |        232 |        443 |     10,430 |
+| YAML     |          2 |        150 |          2 |          7 |        159 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                     | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                        |         69 |      9,905 |        234 |        450 |     10,589 |
+| app                                                                                                                      |          5 |        400 |         34 |         61 |        495 |
+| localization                                                                                                             |          5 |        876 |         38 |         41 |        955 |
+| localization/translations                                                                                                |          4 |        876 |          6 |         27 |        909 |
+| services                                                                                                                 |          1 |         49 |          2 |          6 |         57 |
+| services/client                                                                                                          |          1 |         49 |          2 |          6 |         57 |
+| ui                                                                                                                       |         49 |      6,996 |        126 |        298 |      7,420 |
+| ui/add_technician                                                                                                        |          3 |        232 |          5 |         15 |        252 |
+| ui/authentication                                                                                                        |          2 |        437 |          7 |         24 |        468 |
+| ui/bid_details                                                                                                           |          1 |        179 |          7 |          4 |        190 |
+| ui/bid_now                                                                                                               |          1 |        567 |          8 |         12 |        587 |
+| ui/complaints                                                                                                            |          3 |        262 |         15 |         11 |        288 |
+| ui/complaints/widgets                                                                                                    |          1 |         70 |          0 |          2 |         72 |
+| ui/home                                                                                                                  |         18 |      2,437 |         72 |        132 |      2,641 |
+| ui/home/dashboard                                                                                                        |          2 |        332 |         26 |         11 |        369 |
+| ui/home/dashboard/widgets                                                                                                |          1 |        115 |          0 |          6 |        121 |
+| ui/home/manage_bids                                                                                                      |          4 |        278 |          5 |         21 |        304 |
+| ui/home/manage_bids/widgets                                                                                              |          1 |        139 |          0 |          3 |        142 |
+| ui/home/notifications                                                                                                    |          2 |        170 |          0 |          9 |        179 |
+| ui/home/notifications/widgets                                                                                            |          1 |         71 |          0 |          4 |         75 |
+| ui/home/profile                                                                                                          |          1 |        774 |          1 |         21 |        796 |
+| ui/home/projects                                                                                                         |          4 |        320 |          5 |         23 |        348 |
+| ui/home/projects/widgets                                                                                                 |          1 |        179 |          0 |          3 |        182 |
+| ui/home/widgets                                                                                                          |          2 |        304 |          1 |         19 |        324 |
+| ui/how_it_works                                                                                                          |          1 |        115 |          0 |          4 |        119 |
+| ui/invoices                                                                                                              |          4 |        383 |          6 |         21 |        410 |
+| ui/invoices/widget                                                                                                       |          1 |        224 |          1 |          4 |        229 |
+| ui/payment_details                                                                                                       |          1 |        225 |          0 |          3 |        228 |
+| ui/profile_details                                                                                                       |          5 |      1,111 |          0 |         26 |      1,137 |
+| ui/profile_details/about_me                                                                                              |          1 |        192 |          0 |          6 |        198 |
+| ui/profile_details/my_attachments                                                                                        |          1 |        201 |          0 |          4 |        205 |
+| ui/profile_details/my_payments                                                                                           |          1 |        421 |          0 |          3 |        424 |
+| ui/profile_details/my_tools                                                                                              |          1 |        133 |          0 |          7 |        140 |
+| ui/profile_details/others                                                                                                |          1 |        164 |          0 |          6 |        170 |
+| ui/project_details                                                                                                       |          1 |        234 |          0 |          5 |        239 |
+| ui/settings                                                                                                              |          1 |         73 |          0 |          4 |         77 |
+| ui/splash_screen                                                                                                         |          1 |         13 |          0 |          4 |         17 |
+| ui/technician_details                                                                                                    |          1 |        174 |          0 |          3 |        177 |
+| ui/technicians                                                                                                           |          4 |        317 |          5 |         22 |        344 |
+| ui/technicians/widgets                                                                                                   |          1 |        163 |          0 |          4 |        167 |
+| ui/view_invoice                                                                                                          |          2 |        237 |          1 |          8 |        246 |
+| ui/view_invoice/widgets                                                                                                  |          1 |         56 |          1 |          5 |         62 |
+| utils                                                                                                                    |          6 |      1,397 |         33 |         27 |      1,457 |
+| utils/icons                                                                                                              |          2 |      1,350 |         32 |         10 |      1,392 |
+| widgets                                                                                                                  |          2 |        142 |          1 |         13 |        156 |
++--------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                                 | language | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/app/app.dart                                                 | Dart     |         98 |         28 |          8 |        134 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/app/config_store.dart                                        | Dart     |         41 |          0 |         14 |         55 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/app/config_store.g.dart                                      | Dart     |         45 |          5 |         18 |         68 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/app/routes.dart                                              | Dart     |        125 |          0 |          4 |        129 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/app/session_handler.dart                                     | Dart     |         91 |          1 |         17 |        109 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/localization/app_localization.dart                           | Dart     |          0 |         32 |         14 |         46 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/localization/translations/translations.i69n.dart             | Dart     |        362 |          2 |         10 |        374 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/localization/translations/translations.i69n.yaml             | YAML     |         75 |          1 |          4 |         80 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/localization/translations/translations_ar.i69n.dart          | Dart     |        364 |          2 |         10 |        376 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/localization/translations/translations_ar.i69n.yaml          | YAML     |         75 |          1 |          3 |         79 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/main.dart                                                    | Dart     |         45 |          0 |          4 |         49 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/services/client/http_client_provider.dart                    | Dart     |         49 |          2 |          6 |         57 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/add_technician/add_technician_screen.dart                 | Dart     |        203 |          0 |          3 |        206 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/add_technician/add_technician_store.dart                  | Dart     |          8 |          0 |          4 |         12 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/add_technician/add_technician_store.g.dart                | Dart     |         21 |          5 |          8 |         34 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/authentication/login_screen.dart                          | Dart     |        115 |          2 |          4 |        121 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/authentication/signup_screen.dart                         | Dart     |        322 |          5 |         20 |        347 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/bid_details/bid_details_screen.dart                       | Dart     |        179 |          7 |          4 |        190 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/bid_now/bid_now_screen.dart                               | Dart     |        567 |          8 |         12 |        587 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/complaints/complaints_screen.dart                         | Dart     |         74 |         15 |          5 |         94 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/complaints/file_complaint_screen.dart                     | Dart     |        118 |          0 |          4 |        122 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/complaints/widgets/complaint_tile.dart                    | Dart     |         70 |          0 |          2 |         72 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/dashboard/dashboard_screen.dart                      | Dart     |        217 |         26 |          5 |        248 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/dashboard/widgets/dash_tile.dart                     | Dart     |        115 |          0 |          6 |        121 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/home_screen.dart                                     | Dart     |        199 |         29 |          9 |        237 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/home_store.dart                                      | Dart     |         13 |          0 |          6 |         19 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/home_store.g.dart                                    | Dart     |         47 |          5 |         13 |         65 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/manage_bids/manage_bids_screen.dart                  | Dart     |        111 |          0 |          6 |        117 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/manage_bids/manage_bids_store.dart                   | Dart     |          7 |          0 |          4 |         11 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/manage_bids/manage_bids_store.g.dart                 | Dart     |         21 |          5 |          8 |         34 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/manage_bids/widgets/bid_tile.dart                    | Dart     |        139 |          0 |          3 |        142 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/notifications/notifications_screen.dart              | Dart     |         99 |          0 |          5 |        104 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/notifications/widgets/notification_tile.dart         | Dart     |         71 |          0 |          4 |         75 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/profile/profile_screen.dart                          | Dart     |        774 |          1 |         21 |        796 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/projects/project_screen.dart                         | Dart     |        113 |          0 |          4 |        117 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/projects/project_screen_store.dart                   | Dart     |          7 |          0 |          8 |         15 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/projects/project_screen_store.g.dart                 | Dart     |         21 |          5 |          8 |         34 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/projects/widgets/project_tile.dart                   | Dart     |        179 |          0 |          3 |        182 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/widgets/bottom_bar.dart                              | Dart     |        134 |          1 |          8 |        143 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/home/widgets/shortcut_overlay.dart                        | Dart     |        170 |          0 |         11 |        181 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/how_it_works/how_it_works_screen.dart                     | Dart     |        115 |          0 |          4 |        119 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/invoices/invoices_screen.dart                             | Dart     |        131 |          0 |          5 |        136 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/invoices/invoices_store.dart                              | Dart     |          7 |          0 |          4 |         11 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/invoices/invoices_store.g.dart                            | Dart     |         21 |          5 |          8 |         34 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/invoices/widget/invoice_tile.dart                         | Dart     |        224 |          1 |          4 |        229 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/payment_details/payment_details_screen.dart               | Dart     |        225 |          0 |          3 |        228 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/profile_details/about_me/about_me_screen.dart             | Dart     |        192 |          0 |          6 |        198 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/profile_details/my_attachments/my_attachments_screen.dart | Dart     |        201 |          0 |          4 |        205 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/profile_details/my_payments/my_payments_screen.dart       | Dart     |        421 |          0 |          3 |        424 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/profile_details/my_tools/my_tools_screen.dart             | Dart     |        133 |          0 |          7 |        140 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/profile_details/others/others_screen.dart                 | Dart     |        164 |          0 |          6 |        170 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/project_details/project_details_screen.dart               | Dart     |        234 |          0 |          5 |        239 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/settings/settings_screen.dart                             | Dart     |         73 |          0 |          4 |         77 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/splash_screen/splash_screen.dart                          | Dart     |         13 |          0 |          4 |         17 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/technician_details/technician_details_screen.dart         | Dart     |        174 |          0 |          3 |        177 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/technicians/technician_screen.dart                        | Dart     |        126 |          0 |          6 |        132 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/technicians/technician_store.dart                         | Dart     |          7 |          0 |          4 |         11 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/technicians/technician_store.g.dart                       | Dart     |         21 |          5 |          8 |         34 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/technicians/widgets/technician_tile.dart                  | Dart     |        163 |          0 |          4 |        167 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/view_invoice/view_invoices.dart                           | Dart     |        181 |          0 |          3 |        184 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/ui/view_invoice/widgets/view_invoice_tile.dart               | Dart     |         56 |          1 |          5 |         62 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/utils/app_theme.dart                                         | Dart     |          9 |          0 |          4 |         13 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/utils/helper_functions.dart                                  | Dart     |         19 |          1 |          3 |         23 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/utils/icons/custom_filled_icons_icons.dart                   | Dart     |        714 |         16 |          5 |        735 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/utils/icons/custom_icons_icons.dart                          | Dart     |        636 |         16 |          5 |        657 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/utils/utils.dart                                             | Dart     |          0 |          0 |          4 |          4 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/utils/validation_extension.dart                              | Dart     |         19 |          0 |          6 |         25 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/widgets/custom_fab.dart                                      | Dart     |         66 |          0 |          3 |         69 |
+| /Users/theapplogicsm1/Documents/Freelance/sv_rms_mobile/lib/widgets/custom_tabbar.dart                                   | Dart     |         76 |          1 |         10 |         87 |
+| Total                                                                                                                    |          |      9,905 |        234 |        450 |     10,589 |
++--------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
