@@ -44,9 +44,7 @@ class _ViewInvoicesScreenState extends State<ViewInvoicesScreen> {
                         ),
                       );
                     },
-                    icon: const Icon(
-                      Icons.edit,
-                    ),
+                    icon: const Icon(Icons.edit),
                   )
                 ],
               ),
