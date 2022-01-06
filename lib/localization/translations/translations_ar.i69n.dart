@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, unused_field, camel_case_types, annotate_overrides, prefer_single_quotes, non_constant_identifier_names
+// ignore_for_file: unused_element, unused_field, camel_case_types, annotate_overrides, prefer_single_quotes
 // GENERATED FILE, do not edit!
 import 'package:i69n/i69n.dart' as i69n;
 import 'translations.i69n.dart';

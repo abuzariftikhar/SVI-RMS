@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sv_rms_mobile/model/get_vendor_detail/get_vendor_detail.dart';
+import 'package:sv_rms_mobile/services/client/get_vendor_details.dart';
 
 class MyToolsScreen extends StatefulWidget {
   const MyToolsScreen({Key? key}) : super(key: key);
@@ -11,44 +13,68 @@ class _MyToolsScreenState extends State<MyToolsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          const SliverAppBar(
-            pinned: true,
-            centerTitle: true,
-            title: Text(
-              "Tools",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.all(16.0),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  const AdvanceToolsTile(
-                    label: "End User Computing",
-                    status: "Incomplete",
+      body: FutureBuilder<GetVendorDetail>(
+        future: getVendorDetails(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                const SliverAppBar(
+                  pinned: true,
+                  centerTitle: true,
+                  title: Text(
+                    "Tools",
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  const Divider(),
-                  const ToolsTile(
-                    isAcheived: true,
-                    label: "Laptop Charger",
+                ),
+                SliverPadding(
+                  padding: const EdgeInsets.all(16.0),
+                  sliver: SliverList(
+                    delegate: SliverChildListDelegate(
+                      [
+                        const AdvanceToolsTile(
+                          label: "End User Computing",
+                          status: "Incomplete",
+                        ),
+                        const Divider(),
+                        ToolsTile(
+                          isAcheived: true,
+                          //  label: "Laptop Chargers",
+                          label: snapshot.data!.tools![0].name,
+                        ),
+                        ToolsTile(
+                          isAcheived: true,
+                          // label: "Any Smart Phone with Internet and Camera",
+                          label: snapshot.data!.tools![1].name,
+                        ),
+                        ToolsTile(
+                          isAcheived: true,
+                          // label: "Notepad",
+                          label: snapshot.data!.tools![2].name,
+                        ),
+                        const ToolsTile(
+                          isAcheived: false,
+                          label: "Windows Laptop",
+                          //label: snapshot.data!.tools![3].name,
+                        ),
+                        const ToolsTile(
+                          isAcheived: false,
+                          label: "Basic Screw Driver Set",
+                          //label: snapshot.data!.tools![4].name,
+                        ),
+                      ],
+                    ),
                   ),
-                  const ToolsTile(
-                    isAcheived: true,
-                    label: "Any Smart Phone with Internet and Camera",
-                  ),
-                  const ToolsTile(isAcheived: true, label: "Notepad"),
-                  const ToolsTile(isAcheived: false, label: "Windows Laptop"),
-                  const ToolsTile(
-                      isAcheived: false, label: "Basic Screw Driver Set"),
-                ],
-              ),
-            ),
-          ),
-        ],
+                ),
+              ],
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
       ),
     );
   }

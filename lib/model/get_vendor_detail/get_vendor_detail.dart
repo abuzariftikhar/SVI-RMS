@@ -1,16 +1,13 @@
-// To parse this JSON data, do
-//
-//     final welcome = welcomeFromJson(jsonString);
-
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
+GetVendorDetail getVendorDetailFromJson(String str) =>
+    GetVendorDetail.fromJson(json.decode(str));
 
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
+String getVendorDetailToJson(GetVendorDetail data) =>
+    json.encode(data.toJson());
 
-class Welcome {
-  Welcome({
+class GetVendorDetail {
+  GetVendorDetail({
     required this.basicInfo,
     required this.vendorAttachments,
     required this.bankDetails,
@@ -23,52 +20,89 @@ class Welcome {
     required this.tools,
   });
 
-  Map<String, String> basicInfo;
-  List<VendorAttachment> vendorAttachments;
-  List<BankDetail> bankDetails;
-  List<Certificate> certificates;
-  List<CoverageArea> coverageAreas;
-  List<Education> educations;
-  List<Language> languages;
-  List<dynamic> rates;
-  List<Skill> skills;
-  List<Tool> tools;
+  Map<String, dynamic>? basicInfo;
+  List<VendorAttachment>? vendorAttachments;
+  List<BankDetail>? bankDetails;
+  List<Certificate>? certificates;
+  List<CoverageArea>? coverageAreas;
+  List<Education>? educations;
+  List<Language>? languages;
+  List<dynamic>? rates;
+  List<Skill>? skills;
+  List<Tool>? tools;
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
-        basicInfo: Map.from(json["basic_info"])
-            .map((k, v) => MapEntry<String, String>(k, v)),
-        vendorAttachments: List<VendorAttachment>.from(
-            json["vendor_attachments"]
+  factory GetVendorDetail.fromJson(Map<String, dynamic> json) =>
+      GetVendorDetail(
+        basicInfo: json["basic_info"] == null
+            ? null
+            : Map.from(json["basic_info"])
+                .map((k, v) => MapEntry<String, dynamic>(k, v)),
+        vendorAttachments: json["vendor_attachments"] == null
+            ? null
+            : List<VendorAttachment>.from(json["vendor_attachments"]
                 .map((x) => VendorAttachment.fromJson(x))),
-        bankDetails: List<BankDetail>.from(
-            json["bank_details"].map((x) => BankDetail.fromJson(x))),
-        certificates: List<Certificate>.from(
-            json["certificates"].map((x) => Certificate.fromJson(x))),
-        coverageAreas: List<CoverageArea>.from(
-            json["coverage_areas"].map((x) => CoverageArea.fromJson(x))),
-        educations: List<Education>.from(
-            json["educations"].map((x) => Education.fromJson(x))),
-        languages: List<Language>.from(
-            json["languages"].map((x) => Language.fromJson(x))),
-        rates: List<dynamic>.from(json["rates"].map((x) => x)),
-        skills: List<Skill>.from(json["skills"].map((x) => Skill.fromJson(x))),
-        tools: List<Tool>.from(json["tools"].map((x) => Tool.fromJson(x))),
+        bankDetails: json["bank_details"] == null
+            ? null
+            : List<BankDetail>.from(
+                json["bank_details"].map((x) => BankDetail.fromJson(x))),
+        certificates: json["certificates"] == null
+            ? null
+            : List<Certificate>.from(
+                json["certificates"].map((x) => Certificate.fromJson(x))),
+        coverageAreas: json["coverage_areas"] == null
+            ? null
+            : List<CoverageArea>.from(
+                json["coverage_areas"].map((x) => CoverageArea.fromJson(x))),
+        educations: json["educations"] == null
+            ? null
+            : List<Education>.from(
+                json["educations"].map((x) => Education.fromJson(x))),
+        languages: json["languages"] == null
+            ? null
+            : List<Language>.from(
+                json["languages"].map((x) => Language.fromJson(x))),
+        rates: json["rates"] == null
+            ? null
+            : List<dynamic>.from(json["rates"].map((x) => x)),
+        skills: json["skills"] == null
+            ? null
+            : List<Skill>.from(json["skills"].map((x) => Skill.fromJson(x))),
+        tools: json["tools"] == null
+            ? null
+            : List<Tool>.from(json["tools"].map((x) => Tool.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "basic_info":
-            Map.from(basicInfo).map((k, v) => MapEntry<String, dynamic>(k, v)),
-        "vendor_attachments":
-            List<dynamic>.from(vendorAttachments.map((x) => x.toJson())),
-        "bank_details": List<dynamic>.from(bankDetails.map((x) => x.toJson())),
-        "certificates": List<dynamic>.from(certificates.map((x) => x.toJson())),
-        "coverage_areas":
-            List<dynamic>.from(coverageAreas.map((x) => x.toJson())),
-        "educations": List<dynamic>.from(educations.map((x) => x.toJson())),
-        "languages": List<dynamic>.from(languages.map((x) => x.toJson())),
-        "rates": List<dynamic>.from(rates.map((x) => x)),
-        "skills": List<dynamic>.from(skills.map((x) => x.toJson())),
-        "tools": List<dynamic>.from(tools.map((x) => x.toJson())),
+        "basic_info": basicInfo == null
+            ? null
+            : Map.from(basicInfo!)
+                .map((k, v) => MapEntry<String, dynamic>(k, v)),
+        "vendor_attachments": vendorAttachments == null
+            ? null
+            : List<dynamic>.from(vendorAttachments!.map((x) => x.toJson())),
+        "bank_details": bankDetails == null
+            ? null
+            : List<dynamic>.from(bankDetails!.map((x) => x.toJson())),
+        "certificates": certificates == null
+            ? null
+            : List<dynamic>.from(certificates!.map((x) => x.toJson())),
+        "coverage_areas": coverageAreas == null
+            ? null
+            : List<dynamic>.from(coverageAreas!.map((x) => x.toJson())),
+        "educations": educations == null
+            ? null
+            : List<dynamic>.from(educations!.map((x) => x.toJson())),
+        "languages": languages == null
+            ? null
+            : List<dynamic>.from(languages!.map((x) => x.toJson())),
+        "rates":
+            rates == null ? null : List<dynamic>.from(rates!.map((x) => x)),
+        "skills": skills == null
+            ? null
+            : List<dynamic>.from(skills!.map((x) => x.toJson())),
+        "tools": tools == null
+            ? null
+            : List<dynamic>.from(tools!.map((x) => x.toJson())),
       };
 }
 
@@ -78,8 +112,8 @@ class BankDetail {
     required this.bankName,
     required this.bankSwift,
     required this.iban,
-    @required this.cityAddress,
-    @required this.accountTitle,
+    required this.cityAddress,
+    required this.accountTitle,
     required this.latest,
     required this.accountType,
     required this.bankCountry,

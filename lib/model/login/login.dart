@@ -1,65 +1,65 @@
 // To parse this JSON data, do
 //
-//     final welcome = welcomeFromJson(jsonString);
+//     final login = loginFromJson(jsonString);
 
 import 'dart:convert';
 
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
+Login loginFromJson(String str) => Login.fromJson(json.decode(str));
 
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
+String loginToJson(Login data) => json.encode(data.toJson());
 
-class Welcome {
-  Welcome({
-    required this.code,
-    required this.status,
-    required this.message,
-    required this.userDetail,
-  });
+class Login {
+    Login({
+        required this.code,
+        required this.status,
+        required this.message,
+        required this.userDetail,
+    });
 
-  int code;
-  String status;
-  String message;
-  UserDetail userDetail;
+    int code;
+    String status;
+    String message;
+    UserDetail userDetail;
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+    factory Login.fromJson(Map<String, dynamic> json) => Login(
         code: json["code"],
         status: json["status"],
         message: json["message"],
         userDetail: UserDetail.fromJson(json["user_detail"]),
-      );
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "code": code,
         "status": status,
         "message": message,
         "user_detail": userDetail.toJson(),
-      };
+    };
 }
 
 class UserDetail {
-  UserDetail({
-    required this.id,
-    required this.name,
-    required this.profileImage,
-    required this.emailAddress,
-    required this.suspended,
-    required this.fromSite,
-    required this.approved,
-    required this.addedByTitle,
-    required this.vendorTypeId,
-  });
+    UserDetail({
+        required this.id,
+        required this.name,
+        required this.profileImage,
+        required this.emailAddress,
+        required this.suspended,
+        required this.fromSite,
+        required this.approved,
+        required this.addedByTitle,
+        required this.vendorTypeId,
+    });
 
-  String id;
-  String name;
-  String profileImage;
-  String emailAddress;
-  String suspended;
-  String fromSite;
-  String approved;
-  String addedByTitle;
-  String vendorTypeId;
+    String id;
+    String name;
+    String profileImage;
+    String emailAddress;
+    String suspended;
+    String fromSite;
+    String approved;
+    String addedByTitle;
+    String vendorTypeId;
 
-  factory UserDetail.fromJson(Map<String, dynamic> json) => UserDetail(
+    factory UserDetail.fromJson(Map<String, dynamic> json) => UserDetail(
         id: json["id"],
         name: json["name"],
         profileImage: json["profile_image"],
@@ -69,9 +69,9 @@ class UserDetail {
         approved: json["approved"],
         addedByTitle: json["added_by_title"],
         vendorTypeId: json["vendor_type_id"],
-      );
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
         "profile_image": profileImage,
@@ -81,5 +81,5 @@ class UserDetail {
         "approved": approved,
         "added_by_title": addedByTitle,
         "vendor_type_id": vendorTypeId,
-      };
+    };
 }

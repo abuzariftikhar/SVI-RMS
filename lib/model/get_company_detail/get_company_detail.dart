@@ -1,15 +1,13 @@
-// To parse this JSON data, do
-//
-//     final welcome = welcomeFromJson(jsonString);
-
 import 'dart:convert';
 
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
+GetCompanyDetail getCompanyDetailFromJson(String str) =>
+    GetCompanyDetail.fromJson(json.decode(str));
 
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
+String getCompanyDetailToJson(GetCompanyDetail data) =>
+    json.encode(data.toJson());
 
-class Welcome {
-  Welcome({
+class GetCompanyDetail {
+  GetCompanyDetail({
     required this.basicInfo,
     required this.companyAttachments,
     required this.certificates,
@@ -17,30 +15,47 @@ class Welcome {
     required this.coverageAreas,
   });
 
-  BasicInfo basicInfo;
-  List<dynamic> companyAttachments;
-  List<Certificate> certificates;
-  List<Escalation> escalations;
-  List<dynamic> coverageAreas;
+  BasicInfo? basicInfo;
+  List<dynamic>? companyAttachments;
+  List<Certificate>? certificates;
+  List<Escalation>? escalations;
+  List<dynamic>? coverageAreas;
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
-        basicInfo: BasicInfo.fromJson(json["basic_info"]),
-        companyAttachments:
-            List<dynamic>.from(json["company_attachments"].map((x) => x)),
-        certificates: List<Certificate>.from(
-            json["certificates"].map((x) => Certificate.fromJson(x))),
-        escalations: List<Escalation>.from(
-            json["escalations"].map((x) => Escalation.fromJson(x))),
-        coverageAreas: List<dynamic>.from(json["coverage_areas"].map((x) => x)),
+  factory GetCompanyDetail.fromJson(Map<String, dynamic> json) =>
+      GetCompanyDetail(
+        basicInfo: json["basic_info"] == null
+            ? null
+            : BasicInfo.fromJson(json["basic_info"]),
+        companyAttachments: json["company_attachments"] == null
+            ? null
+            : List<dynamic>.from(json["company_attachments"].map((x) => x)),
+        certificates: json["certificates"] == null
+            ? null
+            : List<Certificate>.from(
+                json["certificates"].map((x) => Certificate.fromJson(x))),
+        escalations: json["escalations"] == null
+            ? null
+            : List<Escalation>.from(
+                json["escalations"].map((x) => Escalation.fromJson(x))),
+        coverageAreas: json["coverage_areas"] == null
+            ? null
+            : List<dynamic>.from(json["coverage_areas"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
-        "basic_info": basicInfo.toJson(),
-        "company_attachments":
-            List<dynamic>.from(companyAttachments.map((x) => x)),
-        "certificates": List<dynamic>.from(certificates.map((x) => x.toJson())),
-        "escalations": List<dynamic>.from(escalations.map((x) => x.toJson())),
-        "coverage_areas": List<dynamic>.from(coverageAreas.map((x) => x)),
+        "basic_info": basicInfo == null ? null : basicInfo!.toJson(),
+        "company_attachments": companyAttachments == null
+            ? null
+            : List<dynamic>.from(companyAttachments!.map((x) => x)),
+        "certificates": certificates == null
+            ? null
+            : List<dynamic>.from(certificates!.map((x) => x.toJson())),
+        "escalations": escalations == null
+            ? null
+            : List<dynamic>.from(escalations!.map((x) => x.toJson())),
+        "coverage_areas": coverageAreas == null
+            ? null
+            : List<dynamic>.from(coverageAreas!.map((x) => x)),
       };
 }
 
@@ -97,55 +112,55 @@ class BasicInfo {
     required this.verificationCode,
   });
 
-  String id;
-  String companyName;
-  String website;
-  String companyAddress;
-  String lat;
-  String lng;
-  String companyNumber;
-  String companyTaxNumber;
-  String companyEmail;
-  String password;
-  String companyContactNumber;
-  String companyAvailability;
-  String companyGeneralSkills;
-  String contactMatrixName;
-  String contactMatrixEmail;
-  String contactMatrixContactNumber;
-  String contactMatrixLocation;
-  String contactMatrixServerDeskEmail;
-  String contactMatrixServerDeskContact;
-  String paymentMechanism;
-  String formPercentage;
-  String companyProfileAttachment;
-  String rateCardAttachment;
-  String profileImage;
-  String vendorTypeId;
-  String approved;
-  String addedBy;
-  String addedByTitle;
-  String gtrNotifRead;
-  String sdcAddedNotifToGtm;
-  String rejectedByGtr;
-  dynamic reasonForRejectionGtr;
-  String rejectedByGtrNotif;
-  String acceptedByGtrNotif;
-  dynamic assignedToUser;
-  String assignedNotifRead;
-  dynamic gtmRejectionComment;
-  String gtmApprovalNotifToGtr;
-  DateTime addedDate;
-  dynamic editedDate;
-  dynamic link;
-  String smsAlert;
-  String opened;
-  String suspended;
-  String fromSite;
-  String siteRejectionByGtr;
-  String gtrActivitySeen;
-  String phoneVerified;
-  String verificationCode;
+  final String id;
+  final String companyName;
+  final String website;
+  final String companyAddress;
+  final String lat;
+  final String lng;
+  final String companyNumber;
+  final String companyTaxNumber;
+  final String companyEmail;
+  final String password;
+  final String companyContactNumber;
+  final String companyAvailability;
+  final String companyGeneralSkills;
+  final String contactMatrixName;
+  final String contactMatrixEmail;
+  final String contactMatrixContactNumber;
+  final String contactMatrixLocation;
+  final String contactMatrixServerDeskEmail;
+  final String contactMatrixServerDeskContact;
+  final String paymentMechanism;
+  final String formPercentage;
+  final String companyProfileAttachment;
+  final String rateCardAttachment;
+  final String profileImage;
+  final String vendorTypeId;
+  final String approved;
+  final String addedBy;
+  final String addedByTitle;
+  final String gtrNotifRead;
+  final String sdcAddedNotifToGtm;
+  final String rejectedByGtr;
+  final dynamic reasonForRejectionGtr;
+  final String rejectedByGtrNotif;
+  final String acceptedByGtrNotif;
+  final dynamic assignedToUser;
+  final String assignedNotifRead;
+  final dynamic gtmRejectionComment;
+  final String gtmApprovalNotifToGtr;
+  final dynamic addedDate;
+  final dynamic editedDate;
+  final dynamic link;
+  final String smsAlert;
+  final String opened;
+  final String suspended;
+  final String fromSite;
+  final String siteRejectionByGtr;
+  final String gtrActivitySeen;
+  final String phoneVerified;
+  final String verificationCode;
 
   factory BasicInfo.fromJson(Map<String, dynamic> json) => BasicInfo(
         id: json["id"],
@@ -187,7 +202,9 @@ class BasicInfo {
         assignedNotifRead: json["assigned_notif_read"],
         gtmRejectionComment: json["gtm_rejection_comment"],
         gtmApprovalNotifToGtr: json["gtm_approval_notif_to_gtr"],
-        addedDate: DateTime.parse(json["added_date"]),
+        addedDate: json["added_date"] == null
+            ? null
+            : DateTime.parse(json["added_date"]),
         editedDate: json["edited_date"],
         link: json["link"],
         smsAlert: json["sms_alert"],
@@ -239,8 +256,9 @@ class BasicInfo {
         "assigned_notif_read": assignedNotifRead,
         "gtm_rejection_comment": gtmRejectionComment,
         "gtm_approval_notif_to_gtr": gtmApprovalNotifToGtr,
-        "added_date":
-            "${addedDate.year.toString().padLeft(4, '0')}-${addedDate.month.toString().padLeft(2, '0')}-${addedDate.day.toString().padLeft(2, '0')}",
+        "added_date": addedDate == null
+            ? null
+            : "${addedDate.year.toString().padLeft(4, '0')}-${addedDate.month.toString().padLeft(2, '0')}-${addedDate.day.toString().padLeft(2, '0')}",
         "edited_date": editedDate,
         "link": link,
         "sms_alert": smsAlert,
@@ -261,9 +279,9 @@ class Certificate {
     required this.file,
   });
 
-  String companyId;
-  String name;
-  String file;
+  final String companyId;
+  final String name;
+  final String file;
 
   factory Certificate.fromJson(Map<String, dynamic> json) => Certificate(
         companyId: json["company_id"],
@@ -286,10 +304,10 @@ class Escalation {
     required this.escalationContactContact,
   });
 
-  String companyId;
-  String escalationContactName;
-  String escalationContactEmail;
-  String escalationContactContact;
+  final String companyId;
+  final String escalationContactName;
+  final String escalationContactEmail;
+  final String escalationContactContact;
 
   factory Escalation.fromJson(Map<String, dynamic> json) => Escalation(
         companyId: json["company_id"],

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sv_rms_mobile/services/login.dart';
 import 'package:sv_rms_mobile/ui/home/home_screen.dart';
 
 import 'signup_screen.dart';
@@ -12,6 +13,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,20 +31,21 @@ class _LoginScreenState extends State<LoginScreen> {
             const Text("Enter your login details to\n    access your account",
                 style: TextStyle(fontSize: 16)),
             const SizedBox(height: 110),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: SizedBox(
                 height: 70,
                 child: Material(
                   //color: Colors.white,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16.0),
                       topRight: Radius.circular(16.0)),
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 8.0),
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: emailController,
+                      decoration: const InputDecoration(
                         hintText: "Your Email Here",
                         border: InputBorder.none,
                       ),
@@ -69,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16.0, vertical: 8.0),
                     child: TextField(
+                      controller: passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -92,8 +98,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: CupertinoButton.filled(
                       child: const Text("SIGN-IN"),
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
-                            context, HomeScreen.route);
+                        login(
+                          emailController.text,
+                          passwordController.text,
+                        ).then((value) {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            HomeScreen.route,
+                          );
+                        }).catchError((err) {
+                          // print(err);
+                        });
                       },
                     ),
                   ),

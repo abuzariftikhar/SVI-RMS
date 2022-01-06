@@ -99,7 +99,7 @@ Route<dynamic>? generateRoute(RouteSettings settings) {
 
   case AboutMeScreen.route:
       return MaterialPageRoute(
-        builder: (context) => const AboutMeScreen(),
+        builder: (context) =>  const AboutMeScreen(),
       );
       case MyAttachmentsScreen.route:
       return MaterialPageRoute(

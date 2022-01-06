@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sv_rms_mobile/model/get_vendor_detail/get_vendor_detail.dart';
+import 'package:sv_rms_mobile/services/client/get_vendor_details.dart';
 
 class MyAttachmentsScreen extends StatefulWidget {
   const MyAttachmentsScreen({Key? key}) : super(key: key);
@@ -11,103 +13,136 @@ class _MyAttachmentsScreenState extends State<MyAttachmentsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          const SliverAppBar(
-            pinned: true,
-            centerTitle: true,
-            title: Text(
-              "My Attachments",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                "Educational Attachments",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  const AttachmentTile(
-                    label: "Enginering Degree",
-                    location: "Karachi, Pakistan",
-                    fileName: "degree_university.pdf",
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                "Certificate Attachments",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  const AttachmentTile(
-                    label: "PMP Certification",
-                    fileName: "pmp_certificate.pdf",
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                "Attachments",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  const AttachmentTile(
-                    label: "NDA File",
-                    fileName: "nda_mutal.pdf",
+      body: FutureBuilder<GetVendorDetail>(
+          future: getVendorDetails(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return CustomScrollView(
+                physics: const BouncingScrollPhysics(),
+                slivers: [
+                  const SliverAppBar(
+                    pinned: true,
+                    centerTitle: true,
+                    title: Text(
+                      "My Attachments",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
-                  const AttachmentTile(
-                    label: "CV File",
-                    fileName: "nda_mutal.pdf",
+                  const SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Text(
+                        "Educational Attachments",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                        ),
+                      ),
+                    ),
                   ),
-                  const AttachmentTile(
-                    label: "PP Agreement File",
-                    fileName: "nda_mutal.pdf",
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    sliver: SliverList(
+                      delegate: SliverChildListDelegate(
+                        [
+                          AttachmentTile(
+                            // label: "Enginering Degree",
+                            label: snapshot.data?.educations![0].name,
+                            location: snapshot.data!.educations![0].location,
+                            fileName:
+                                snapshot.data?.educations![0].educationFile,
+                            // location: "Karachi, Pakistan",
+                            // fileName: "degree_university.pdf",
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Text(
+                        "Certificate Attachments",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    sliver: SliverList(
+                      delegate: SliverChildListDelegate(
+                        [
+                          AttachmentTile(
+                            label: snapshot.data!.certificates![0].name,
+                            fileName:
+                                snapshot.data!.certificates![0].certificateFile,
+                            // label: "PMP Certification",
+                            // fileName: "pmp_certificate.pdf",
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Text(
+                        "Vendor Attachments",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    sliver: SliverList(
+                      delegate: SliverChildListDelegate(
+                        [
+                          AttachmentTile(
+                            label: snapshot.data?.vendorAttachments![0].name,
+                            fileName: snapshot
+                                .data?.vendorAttachments![0].attachmentFile,
+                            // label: "NDA File",
+                            // fileName: "nda_mutal.pdf",
+                          ),
+                          AttachmentTile(
+                            // label: "CV File",
+                            // fileName: "nda_mutal.pdf",
+                            label: snapshot.data?.vendorAttachments![1].name,
+                            fileName: snapshot
+                                .data?.vendorAttachments![1].attachmentFile,
+                          ),
+                          AttachmentTile(
+                            // label: "PP Agreement File",
+                            // fileName: "nda_mutal.pdf",
+                            label: snapshot.data?.vendorAttachments![2].name,
+                            fileName: snapshot
+                                .data?.vendorAttachments![2].attachmentFile,
+                          ),
+                          AttachmentTile(
+                            // label: "PP Agreement File",
+                            // fileName: "nda_mutal.pdf",
+                            label: snapshot.data?.vendorAttachments![3].name,
+                            fileName: snapshot
+                                .data?.vendorAttachments![3].attachmentFile,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
-              ),
-            ),
-          ),
-        ],
-      ),
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          }),
     );
   }
 }
@@ -186,11 +221,14 @@ class AttachmentTile extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(
-                    fileName ?? "",
-                    style: const TextStyle(
-                      color: Colors.blue,
-                      decoration: TextDecoration.underline,
+                  Expanded(
+                    child: Text(
+                      fileName ?? "",
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ),
                 ],
