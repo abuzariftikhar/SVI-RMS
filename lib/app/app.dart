@@ -30,7 +30,7 @@ class _RmsAppState extends State<RmsApp> {
         Provider(
           create: (context) {
             final dioProvider = DioClientProvider(
-              baseUrl: "baseurl",
+              baseUrl: "https://rmsportal.net/api",
               sessionHandler: Provider.of(context, listen: false),
             );
             return dioProvider.dio;

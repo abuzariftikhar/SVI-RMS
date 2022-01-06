@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:sv_rms_mobile/blocs/services_bloc.dart';
 
 import 'app/app.dart';
 import 'app/config_store.dart';
@@ -15,6 +16,9 @@ void main() async {
     (value) => runApp(
       MultiProvider(
         providers: [
+          ChangeNotifierProvider(
+            create: (context) => ServicesBloc(),
+          ),
           Provider(create: (_) => SessionHandler()),
           Provider<ConfigStore>(
             create: (context) => ConfigStore(

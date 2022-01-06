@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sv_rms_mobile/model/get_vendor_detail/get_vendor_detail.dart';
-import 'package:sv_rms_mobile/services/client/get_vendor_details.dart';
 
 class MyToolsScreen extends StatefulWidget {
   const MyToolsScreen({Key? key}) : super(key: key);
@@ -13,8 +11,7 @@ class _MyToolsScreenState extends State<MyToolsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<GetVendorDetail>(
-        future: getVendorDetails(),
+      body: FutureBuilder(
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return CustomScrollView(
@@ -38,20 +35,20 @@ class _MyToolsScreenState extends State<MyToolsScreen> {
                           status: "Incomplete",
                         ),
                         const Divider(),
-                        ToolsTile(
+                        const ToolsTile(
                           isAcheived: true,
                           //  label: "Laptop Chargers",
-                          label: snapshot.data!.tools![0].name,
+                          label: "snapshot.data!.tools![0].name",
                         ),
-                        ToolsTile(
+                        const ToolsTile(
                           isAcheived: true,
                           // label: "Any Smart Phone with Internet and Camera",
-                          label: snapshot.data!.tools![1].name,
+                          label: "snapshot.data!.tools![1].name",
                         ),
-                        ToolsTile(
+                        const ToolsTile(
                           isAcheived: true,
                           // label: "Notepad",
-                          label: snapshot.data!.tools![2].name,
+                          label: "snapshot.data!.tools![2].name",
                         ),
                         const ToolsTile(
                           isAcheived: false,
