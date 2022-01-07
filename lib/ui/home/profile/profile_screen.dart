@@ -32,8 +32,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       return FutureBuilder<VendorDetails>(
           future: value.getVendorDetails(id: "2128"),
           builder: (context, snapshot) {
+            print(snapshot.data?.vendorAttachments[0]!.name ?? "");
             if (snapshot.hasData) {
-              print(snapshot.data!.certificates[0]!.certificateFile);
               return Observer(builder: (context) {
                 return CustomScrollView(
                   physics: const BouncingScrollPhysics(),
@@ -59,9 +59,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(90),
                                     color: Colors.blueGrey,
-                                    image: const DecorationImage(
-                                      image: AssetImage(
-                                        "assets/images/profile1.png",
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                        snapshot.data!.basicInfo
+                                                ?.profileImage ??
+                                            "",
                                       ),
                                       fit: BoxFit.cover,
                                     ),
@@ -138,17 +140,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
-                                            children: const [
-                                              Text(
+                                            children: [
+                                              const Text(
                                                 "Location",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
                                               Text(
-                                                " snapshot.data!.basicInfo!",
+                                                snapshot.data?.basicInfo!
+                                                        .mobilityRegionLocation ??
+                                                    "Not Available",
+                                                // " snapshot.data!.basicInfo!",
                                                 // "Luanda, Angola",
-                                                style: TextStyle(),
+                                                style: const TextStyle(),
                                               ),
                                             ],
                                           ),
@@ -190,17 +195,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
-                                            children: const [
-                                              Text(
+                                            children: [
+                                              const Text(
                                                 "Employee Status",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
                                               Text(
-                                                "snapshot.data?.basicInfo![employment_statu]",
+                                                snapshot.data?.basicInfo!
+                                                        .employmentStatus ??
+                                                    "",
                                                 // "Freelancer",
-                                                style: TextStyle(),
+                                                style: const TextStyle(),
                                               ),
                                             ],
                                           ),
@@ -213,18 +220,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
-                                            children: const [
-                                              Text(
+                                            children: [
+                                              const Text(
                                                 "Availability",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
                                               Text(
+                                                snapshot.data?.basicInfo!
+                                                        .availability ??
+                                                    "",
                                                 // snapshot
                                                 //     .data?.basicInfo!["availability"],
-                                                "24/7",
-                                                style: TextStyle(),
+                                                // "24/7",
+                                                style: const TextStyle(),
                                               ),
                                             ],
                                           ),
@@ -244,18 +254,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
-                                            children: const [
-                                              Text(
+                                            children: [
+                                              const Text(
                                                 "Text Number",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
                                               Text(
-                                                // snapshot.data?.basicInfo![
-                                                //     "contact_number_primary"],
-                                                "+92 4564 5445 24",
-                                                style: TextStyle(),
+                                                snapshot.data?.basicInfo!
+                                                        .contactNumberPrimary ??
+                                                    "",
+                                                // "+92 4564 5445 24",
+                                                style: const TextStyle(),
                                               ),
                                             ],
                                           ),
@@ -268,18 +279,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
-                                            children: const [
-                                              Text(
+                                            children: [
+                                              const Text(
                                                 "Registration Date",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
                                               Text(
-                                                "2020-05-10",
-                                                // snapshot.data!
-                                                //     .basicInfo!["registration_date"],
-                                                style: TextStyle(),
+                                                // "2020-05-10",
+                                                snapshot.data!.basicInfo!
+                                                        .registrationDate ??
+                                                    "",
+                                                style: const TextStyle(),
                                               ),
                                             ],
                                           ),
@@ -321,13 +333,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
-                                                children: const [
+                                                children: [
                                                   Text(
-                                                    // snapshot.data?.basicInfo![
-                                                    //         "working_experience_year"] +
-                                                    //     " Years ",
-                                                    "1 Year, 02 Months",
-                                                    style: TextStyle(),
+                                                    snapshot.data?.basicInfo!
+                                                            .workingExperienceYear ??
+                                                        "",
+                                                    // "1 Year, 02 Months",
+                                                    style: const TextStyle(),
                                                   ),
                                                   // Text(
                                                   //   // snapshot.data?.basicInfo![
@@ -358,31 +370,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
-                                            children: const [
-                                              Text(
+                                            children: [
+                                              const Text(
                                                 "Languages",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
-                                              Text(
-                                                "English Level 1",
-                                                // snapshot.data!.languages!
-                                                //     .map(
-                                                //       (e) => e.name,
-                                                //     )
-                                                //     .toString(),
-                                                style: TextStyle(),
-                                              ),
-                                              Text(
-                                                "English Level 1",
-                                                // snapshot.data!.languages!
-                                                //     .map(
-                                                //       (e) => e.languageLevel,
-                                                //     )
-                                                //     .toString(),
-                                                style: TextStyle(),
-                                              ),
+                                              ListView.builder(
+                                                  scrollDirection:
+                                                      Axis.vertical,
+                                                  shrinkWrap: true,
+                                                  itemCount: snapshot
+                                                      .data!.languages.length,
+                                                  itemBuilder: (
+                                                    BuildContext context,
+                                                    int index,
+                                                  ) {
+                                                    return Text(
+                                                      snapshot
+                                                              .data
+                                                              ?.languages[
+                                                                  index]!
+                                                              .name! ??
+                                                          "",
+
+                                                      // snapshot.data!.languages!
+                                                      //     .map(
+                                                      //       (e) => e.name,
+                                                      //     )
+                                                      //     .toString(),
+                                                      style: const TextStyle(),
+                                                    );
+                                                  }),
+                                              // Text(
+                                              //   "English Level 1",
+                                              //   // snapshot.data!.languages!
+                                              //   //     .map(
+                                              //   //       (e) => e.languageLevel,
+                                              //   //     )
+                                              //   //     .toString(),
+                                              //   style: TextStyle(),
+                                              // ),
                                             ],
                                           ),
                                         ),
@@ -454,92 +483,105 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ],
                                     ),
                                     const Divider(),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.6,
-                                          child: const Text(
-                                            // snapshot.data!.skills![0].name,
-                                            "Desk Side Support",
-                                            style: TextStyle(),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.2,
-                                          child: const Text(
-                                            "",
-                                            // snapshot.data!.skills![0].skillLevel,
-                                            style: TextStyle(),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    ListView.builder(
+                                        scrollDirection: Axis.vertical,
+                                        shrinkWrap: true,
+                                        itemCount: snapshot.data!.skills.length,
+                                        itemBuilder: (
+                                          BuildContext context,
+                                          int index,
+                                        ) {
+                                          return Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.6,
+                                                child: Text(
+                                                  snapshot.data?.skills[index]!
+                                                          .name ??
+                                                      "",
+                                                  // "Desk Side Support",
+                                                  style: const TextStyle(),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.2,
+                                                child: Text(
+                                                  // "1",
+                                                  snapshot.data?.skills[index]!
+                                                          .skillLevel ??
+                                                      "",
+                                                  style: const TextStyle(),
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                        }),
                                     const Divider(),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.6,
-                                          child: const Text(
-                                            // snapshot.data!.skills![1].name,
-                                            "Mobile App Testing",
-                                            style: TextStyle(),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.2,
-                                          child: const Text(
-                                            "L3",
-                                            // snapshot.data!.skills![1].skillLevel,
-                                            style: TextStyle(),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const Divider(),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.6,
-                                          child: const Text(
-                                            "Python and Debug",
-                                            // snapshot.data!.skills![2].name,
-                                            style: TextStyle(),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.2,
-                                          child: const Text(
-                                            "L2",
-                                            // snapshot.data!.skills![2].skillLevel,
-                                            style: TextStyle(),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    // Row(
+                                    //   mainAxisAlignment:
+                                    //       MainAxisAlignment.spaceAround,
+                                    //   children: [
+                                    //     SizedBox(
+                                    //       width: MediaQuery.of(context)
+                                    //               .size
+                                    //               .width *
+                                    //           0.6,
+                                    //       child: const Text(
+                                    //         // snapshot.data!.skills![1].name,
+                                    //         "Mobile App Testing",
+                                    //         style: TextStyle(),
+                                    //       ),
+                                    //     ),
+                                    //     SizedBox(
+                                    //       width: MediaQuery.of(context)
+                                    //               .size
+                                    //               .width *
+                                    //           0.2,
+                                    //       child: const Text(
+                                    //         "L3",
+                                    //         // snapshot.data!.skills![1].skillLevel,
+                                    //         style: TextStyle(),
+                                    //       ),
+                                    //     ),
+                                    //   ],
+                                    // ),
+                                    // const Divider(),
+                                    // Row(
+                                    //   mainAxisAlignment:
+                                    //       MainAxisAlignment.spaceAround,
+                                    //   children: [
+                                    //     SizedBox(
+                                    //       width: MediaQuery.of(context)
+                                    //               .size
+                                    //               .width *
+                                    //           0.6,
+                                    //       child: const Text(
+                                    //         "Python and Debug",
+                                    //         // snapshot.data!.skills![2].name,
+                                    //         style: TextStyle(),
+                                    //       ),
+                                    //     ),
+                                    //     SizedBox(
+                                    //       width: MediaQuery.of(context)
+                                    //               .size
+                                    //               .width *
+                                    //           0.2,
+                                    //       child: const Text(
+                                    //         "L2",
+                                    //         // snapshot.data!.skills![2].skillLevel,
+                                    //         style: TextStyle(),
+                                    //       ),
+                                    //     ),
+                                    //   ],
+                                    // ),
                                   ],
                                 ),
                               ),
@@ -568,8 +610,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ProfileTile(
                                     title: "Attachments",
                                     onTap: () {
-                                      Navigator.pushNamed(
-                                          context, MyAttachmentsScreen.route);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              MyAttachmentsScreen(
+                                            certificates:
+                                                snapshot.data!.certificates,
+                                            education:
+                                                snapshot.data!.educations,
+                                            vendorAttachments: snapshot
+                                                .data!.vendorAttachments,
+                                          ),
+                                        ),
+                                      );
                                     },
                                     icon: Icons.attachment_rounded,
                                   ),

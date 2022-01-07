@@ -13,7 +13,6 @@ import 'package:sv_rms_mobile/ui/invoices/invoices_screen.dart';
 import 'package:sv_rms_mobile/ui/invoices/invoices_store.dart';
 import 'package:sv_rms_mobile/ui/payment_details/payment_details_screen.dart';
 import 'package:sv_rms_mobile/ui/profile_details/about_me/about_me_screen.dart';
-import 'package:sv_rms_mobile/ui/profile_details/my_attachments/my_attachments_screen.dart';
 import 'package:sv_rms_mobile/ui/profile_details/my_payments/my_payments_screen.dart';
 import 'package:sv_rms_mobile/ui/profile_details/my_tools/my_tools_screen.dart';
 import 'package:sv_rms_mobile/ui/profile_details/others/others_screen.dart';
@@ -101,10 +100,10 @@ Route<dynamic>? generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) =>  const AboutMeScreen(),
       );
-      case MyAttachmentsScreen.route:
-      return MaterialPageRoute(
-        builder: (context) => const MyAttachmentsScreen(),
-      );
+      // case MyAttachmentsScreen.route:
+      // return MaterialPageRoute(
+      //   builder: (context) =>  const MyAttachmentsScreen(),
+      // );
       case MyPaymentsScreen.route:
       return MaterialPageRoute(
         builder: (context) => const MyPaymentsScreen(),

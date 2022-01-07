@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sv_rms_mobile/blocs/services_bloc.dart';
+import 'package:sv_rms_mobile/model/get_vendor_detail/education/education.dart';
+import 'package:sv_rms_mobile/model/get_vendor_detail/vendor_attachment/vendor_attachment.dart';
+import 'package:sv_rms_mobile/model/get_vendor_detail/vendor_certificate/vendor_certificate.dart';
 
 class MyAttachmentsScreen extends StatefulWidget {
-  const MyAttachmentsScreen({Key? key}) : super(key: key);
+  final List<VendorCertificate?> certificates;
+  final List<Education?> education;
+  final List<VendorAttachment?> vendorAttachments;
+  const MyAttachmentsScreen({
+    Key? key,
+    required this.certificates,
+    required this.education,
+    required this.vendorAttachments,
+  }) : super(key: key);
   static const String route = "attachmentsScreen";
   @override
   _MyAttachmentsScreenState createState() => _MyAttachmentsScreenState();
@@ -11,8 +24,8 @@ class _MyAttachmentsScreenState extends State<MyAttachmentsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(builder: (context, snapshot) {
-        if (snapshot.hasData) {
+      body: Consumer<ServicesBloc>(
+        builder: (context, value, _) {
           return CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
@@ -39,17 +52,18 @@ class _MyAttachmentsScreenState extends State<MyAttachmentsScreen> {
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 sliver: SliverList(
-                  delegate: SliverChildListDelegate(
-                    [
-                      const AttachmentTile(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      return AttachmentTile(
                         // label: "Enginering Degree",
-                        label: "snapshot.data?.educations![0].name",
-                        location: "snapshot.data!.educations![0].location",
-                        fileName: "snapshot.data?.educations![0].educationFile",
+                        label: widget.education[index]!.name,
+                        location: widget.education[index]!.location,
+                        fileName: widget.education[index]!.educationFile,
                         // location: "Karachi, Pakistan",
                         // fileName: "degree_university.pdf",
-                      )
-                    ],
+                      );
+                    },
+                    childCount: widget.education.length,
                   ),
                 ),
               ),
@@ -68,16 +82,16 @@ class _MyAttachmentsScreenState extends State<MyAttachmentsScreen> {
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 sliver: SliverList(
-                  delegate: SliverChildListDelegate(
-                    [
-                      const AttachmentTile(
-                        label: "snapshot.data!.certificates![0].name",
-                        fileName:
-                            "snapshot.data!.certificates![0].certificateFile",
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      AttachmentTile(
+                        label: widget.certificates[index]!.name,
+                        fileName: widget.certificates[index]!.certificateFile,
                         // label: "PMP Certification",
                         // fileName: "pmp_certificate.pdf",
-                      ),
-                    ],
+                      );
+                    },
+                    childCount: widget.certificates.length,
                   ),
                 ),
               ),
@@ -96,48 +110,25 @@ class _MyAttachmentsScreenState extends State<MyAttachmentsScreen> {
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 sliver: SliverList(
-                  delegate: SliverChildListDelegate(
-                    [
-                      const AttachmentTile(
-                        label: "snapshot.data?.vendorAttachments![0].name",
-                        fileName:
-                            "snapshot.data?.vendorAttachments![0].attachmentFile",
-                        // label: "NDA File",
-                        // fileName: "nda_mutal.pdf",
-                      ),
-                      const AttachmentTile(
-                        // label: "CV File",
-                        // fileName: "nda_mutal.pdf",
-                        label: "snapshot.data?.vendorAttachments![1].name",
-                        fileName:
-                            "snapshot.data?.vendorAttachments![1].attachmentFile",
-                      ),
-                      const AttachmentTile(
-                        // label: "PP Agreement File",
-                        // fileName: "nda_mutal.pdf",
-                        label: "snapshot.data?.vendorAttachments![2].name",
-                        fileName:
-                            "snapshot.data?.vendorAttachments![2].attachmentFile",
-                      ),
-                      const AttachmentTile(
-                        // label: "PP Agreement File",
-                        // fileName: "nda_mutal.pdf",
-                        label: "snapshot.data?.vendorAttachments![3].name",
-                        fileName:
-                            "snapshot.data?.vendorAttachments![3].attachmentFile",
-                      ),
-                    ],
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      AttachmentTile(
+                          label: widget.vendorAttachments[index]!.name,
+                          fileName:
+                              widget.vendorAttachments[index]!.attachmentFile
+
+                          // label: "NDA File",
+                          // fileName: "nda_mutal.pdf",
+                          );
+                    },
+                    childCount: widget.vendorAttachments.length,
                   ),
                 ),
               ),
             ],
           );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      }),
+        },
+      ),
     );
   }
 }
