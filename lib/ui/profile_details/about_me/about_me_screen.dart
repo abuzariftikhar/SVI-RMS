@@ -36,18 +36,24 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
     _dobController = TextEditingController(text: widget.basicInfo?.dob);
     _contactNoController =
         TextEditingController(text: widget.basicInfo?.contactNumberSecondary);
-    _phoneNoController = TextEditingController(text: "1234567");
-    _whatsappNoController = TextEditingController(text: "1234567");
-    _emailController = TextEditingController(text: "mkashifali541@gmail.com");
-    _skypeNameController = TextEditingController(text: "sk6543");
+    _phoneNoController =
+        TextEditingController(text: widget.basicInfo?.phoneNumberLandline);
+    _whatsappNoController =
+        TextEditingController(text: widget.basicInfo?.whatsappContactNumber);
+    _emailController =
+        TextEditingController(text: widget.basicInfo?.emailAddress);
+    _skypeNameController =
+        TextEditingController(text: widget.basicInfo?.skypeid);
     _regTaxNoController =
-        TextEditingController(text: "124-123-45-113-43-534-5");
-    _houseNoController = TextEditingController(text: "21B");
-    _streetNameController = TextEditingController(text: "12");
-    _cityController = TextEditingController(text: "Luanda");
-    _countryController = TextEditingController(text: "Angola");
-    _provinceController = TextEditingController(text: "Luanda Province");
-    _postalcodeController = TextEditingController(text: "74000");
+        TextEditingController(text: widget.basicInfo?.nationalId);
+    _houseNoController =
+        TextEditingController(text: widget.basicInfo?.houseNumber);
+    _streetNameController =
+        TextEditingController(text: widget.basicInfo?.streetNumber);
+    _cityController = TextEditingController(text: widget.basicInfo?.city);
+    _countryController = TextEditingController(text: widget.basicInfo?.country);
+    _provinceController = TextEditingController(text: widget.basicInfo?.province);
+    _postalcodeController = TextEditingController(text: widget.basicInfo?.postalCode);
     super.initState();
   }
 

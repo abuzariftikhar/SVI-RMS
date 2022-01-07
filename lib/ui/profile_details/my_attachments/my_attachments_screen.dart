@@ -23,6 +23,7 @@ class MyAttachmentsScreen extends StatefulWidget {
 class _MyAttachmentsScreenState extends State<MyAttachmentsScreen> {
   @override
   Widget build(BuildContext context) {
+    print(widget.certificates.length);
     return Scaffold(
       body: Consumer<ServicesBloc>(
         builder: (context, value, _) {
@@ -84,7 +85,7 @@ class _MyAttachmentsScreenState extends State<MyAttachmentsScreen> {
                 sliver: SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                      AttachmentTile(
+                      return AttachmentTile(
                         label: widget.certificates[index]!.name,
                         fileName: widget.certificates[index]!.certificateFile,
                         // label: "PMP Certification",
@@ -112,7 +113,7 @@ class _MyAttachmentsScreenState extends State<MyAttachmentsScreen> {
                 sliver: SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                      AttachmentTile(
+                      return AttachmentTile(
                           label: widget.vendorAttachments[index]!.name,
                           fileName:
                               widget.vendorAttachments[index]!.attachmentFile
@@ -125,6 +126,7 @@ class _MyAttachmentsScreenState extends State<MyAttachmentsScreen> {
                   ),
                 ),
               ),
+              const SliverToBoxAdapter(child: SizedBox(height: 80)),
             ],
           );
         },

@@ -599,9 +599,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ProfileTile(
                                     title: "About",
                                     onTap: () {
-                                      Navigator.pushNamed(
+                                      Navigator.push(
                                         context,
-                                        AboutMeScreen.route,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              AboutMeScreen(
+                                            basicInfo: snapshot.data!.basicInfo,
+                                          ),
+                                        ),
                                       );
                                     },
                                     icon: Icons.person_pin,

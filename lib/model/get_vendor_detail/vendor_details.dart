@@ -7,6 +7,7 @@ import 'skill/skill.dart';
 import 'tool/tool.dart';
 import 'vendor_attachment/vendor_attachment.dart';
 import 'vendor_certificate/vendor_certificate.dart';
+
 import 'package:json_annotation/json_annotation.dart';
 part 'vendor_details.g.dart';
 
