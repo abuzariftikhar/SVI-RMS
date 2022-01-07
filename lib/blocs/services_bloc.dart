@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:sv_rms_mobile/model/get_projects/get_projects_vendor.dart';
 import 'package:sv_rms_mobile/model/get_vendor_detail/vendor_details.dart';
 
 class ServicesBloc extends ChangeNotifier {
@@ -23,8 +24,24 @@ class ServicesBloc extends ChangeNotifier {
     );
 
     if (response.statusCode == 200 || response.statusCode!.toInt() <= 205) {
-      // print(response.data);
+      print(response.data);
       return VendorDetails.fromJson(response.data);
+    }
+    throw response.statusMessage.toString();
+  }
+
+  Future<ProjectDetail> getProjectDetail(String id) async {
+    Response response = await _dio.get(
+      "/get_projects.php",
+      queryParameters: {
+        "auth_token": _authToken,
+        "id": id,
+      },
+    );
+
+    if (response.statusCode == 200 || response.statusCode!.toInt() <= 205) {
+      // print(response.data);
+      return ProjectDetail.fromJson(response.data);
     }
     throw response.statusMessage.toString();
   }

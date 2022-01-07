@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
+import 'package:sv_rms_mobile/blocs/services_bloc.dart';
 import 'package:sv_rms_mobile/ui/home/projects/project_screen_store.dart';
 import 'package:sv_rms_mobile/ui/home/projects/widgets/project_tile.dart';
 import 'package:sv_rms_mobile/utils/app_theme.dart';
@@ -14,59 +16,65 @@ class ProjectScreen extends StatefulWidget {
 class _ProjectScreenState extends State<ProjectScreen> {
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      physics: const BouncingScrollPhysics(),
-      slivers: [
-        SliverAppBar(
-          backgroundColor: Theme.of(context).cardColor,
-          elevation: 5,
-          pinned: true,
-          toolbarHeight: 0,
-          bottom: PreferredSize(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ProjectTabWidget(
-                    index: 0,
-                    label: "New Projects",
-                    store: widget.store,
+    return Consumer<ServicesBloc>(builder: (context, value, _) {
+      return FutureBuilder(
+          future: value.getProjectDetail("2128"),
+          builder: (context, snapshot) {
+            return CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                SliverAppBar(
+                  backgroundColor: Theme.of(context).cardColor,
+                  elevation: 5,
+                  pinned: true,
+                  toolbarHeight: 0,
+                  bottom: PreferredSize(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          ProjectTabWidget(
+                            index: 0,
+                            label: "New Projects",
+                            store: widget.store,
+                          ),
+                          ProjectTabWidget(
+                            index: 1,
+                            label: "Active Projects",
+                            store: widget.store,
+                          ),
+                          ProjectTabWidget(
+                            index: 2,
+                            label: "Interested Projects",
+                            store: widget.store,
+                          ),
+                          ProjectTabWidget(
+                            index: 3,
+                            label: "Completed Projects",
+                            store: widget.store,
+                          ),
+                        ],
+                      ),
+                    ),
+                    preferredSize: const Size(
+                      double.infinity,
+                      56,
+                    ),
                   ),
-                  ProjectTabWidget(
-                    index: 1,
-                    label: "Active Projects",
-                    store: widget.store,
+                ),
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  sliver: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) => const ProjectTile(),
+                    ),
                   ),
-                  ProjectTabWidget(
-                    index: 2,
-                    label: "Interested Projects",
-                    store: widget.store,
-                  ),
-                  ProjectTabWidget(
-                    index: 3,
-                    label: "Completed Projects",
-                    store: widget.store,
-                  ),
-                ],
-              ),
-            ),
-            preferredSize: const Size(
-              double.infinity,
-              56,
-            ),
-          ),
-        ),
-        SliverPadding(
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          sliver: SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => const ProjectTile(),
-            ),
-          ),
-        ),
-      ],
-    );
+                ),
+              ],
+            );
+          });
+    });
   }
 }
 

@@ -32,7 +32,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       return FutureBuilder<VendorDetails>(
           future: value.getVendorDetails(id: "2128"),
           builder: (context, snapshot) {
-            print(snapshot.data?.vendorAttachments[0]!.name ?? "");
             if (snapshot.hasData) {
               return Observer(builder: (context) {
                 return CustomScrollView(
@@ -602,8 +601,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              AboutMeScreen(
+                                          builder: (context) => AboutMeScreen(
                                             basicInfo: snapshot.data!.basicInfo,
                                           ),
                                         ),
@@ -636,8 +634,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ProfileTile(
                                     title: "Tools",
                                     onTap: () {
-                                      Navigator.pushNamed(
-                                          context, MyToolsScreen.route);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => MyToolsScreen(
+                                            tool: snapshot.data!.tools,
+                                          ),
+                                        ),
+                                      );
                                     },
                                     icon: Icons.radar,
                                   ),
@@ -645,8 +649,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ProfileTile(
                                     title: "Payments",
                                     onTap: () {
-                                      Navigator.pushNamed(
-                                          context, MyPaymentsScreen.route);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              MyPaymentsScreen(
+                                            bankDetail:
+                                                snapshot.data!.bankDetails,
+                                          ),
+                                        ),
+                                      );
                                     },
                                     icon: Icons.payment,
                                   ),
@@ -654,8 +666,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ProfileTile(
                                     title: "Others",
                                     onTap: () {
-                                      Navigator.pushNamed(
-                                          context, OthersScreen.route);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => OthersScreen(
+                                            coverageArea:
+                                                snapshot.data!.coverageAreas,
+                                          ),
+                                        ),
+                                      );
                                     },
                                     icon: Icons.devices_other,
                                   ),

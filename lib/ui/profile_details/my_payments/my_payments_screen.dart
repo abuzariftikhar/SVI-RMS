@@ -1,13 +1,83 @@
 import 'package:flutter/material.dart';
+import 'package:sv_rms_mobile/model/get_vendor_detail/bank_detail/bank_detail.dart';
 
 class MyPaymentsScreen extends StatefulWidget {
-  const MyPaymentsScreen({Key? key}) : super(key: key);
+  final List<BankDetail?> bankDetail;
+  const MyPaymentsScreen({
+    Key? key,
+    required this.bankDetail,
+  }) : super(key: key);
   static const String route = "paymentsScreen";
   @override
   _MyPaymentsScreenState createState() => _MyPaymentsScreenState();
 }
 
 class _MyPaymentsScreenState extends State<MyPaymentsScreen> {
+  late final TextEditingController _bankCountry;
+  late final TextEditingController _accountCurrency;
+  // late final TextEditingController _streetnumber;
+  late final TextEditingController _moreAddress;
+  late final TextEditingController _city;
+  late final TextEditingController _postalCode;
+  late final TextEditingController _country;
+  late final TextEditingController _bankName;
+  late final TextEditingController _bankSwift;
+  late final TextEditingController _iban;
+  late final TextEditingController _cityAddress;
+  late final TextEditingController _accTitle;
+  late final TextEditingController _accType;
+  late final TextEditingController _streetNumber;
+  late final TextEditingController _accHolderName;
+  late final TextEditingController _accNumber;
+  late final TextEditingController _routingNumber;
+  late final TextEditingController _wireTransferNumber;
+  late final TextEditingController _sortCode;
+  late final TextEditingController _bankcode;
+  late final TextEditingController _branchCode;
+  late final TextEditingController _ifscCode;
+  late final TextEditingController _acceptEUR;
+  late final TextEditingController _latest;
+
+  @override
+  void initState() {
+    _bankCountry =
+        TextEditingController(text: widget.bankDetail[0]!.bankCountry);
+    _accountCurrency =
+        TextEditingController(text: widget.bankDetail[0]!.accountCurrency);
+    // _streetnumber =
+    //     TextEditingController(text: widget.bankDetail[0]!.streetNumber);
+    _moreAddress =
+        TextEditingController(text: widget.bankDetail[0]!.moreAddressDetail);
+    _city = TextEditingController(text: widget.bankDetail[0]!.cityTown);
+    _postalCode =
+        TextEditingController(text: widget.bankDetail[0]!.postalZipCode);
+    _country = TextEditingController(text: widget.bankDetail[0]!.country);
+
+    _bankName = TextEditingController(text: widget.bankDetail[0]!.bankName);
+    _bankSwift = TextEditingController(text: widget.bankDetail[0]!.bankSwift);
+    _iban = TextEditingController(text: widget.bankDetail[0]!.iban);
+    _cityAddress =
+        TextEditingController(text: widget.bankDetail[0]!.cityAddress);
+    _accTitle = TextEditingController(text: widget.bankDetail[0]!.accountTitle);
+    _accType = TextEditingController(text: widget.bankDetail[0]!.accountType);
+    _streetNumber =
+        TextEditingController(text: widget.bankDetail[0]!.streetNumber);
+    _accHolderName =
+        TextEditingController(text: widget.bankDetail[0]!.accountHolderName);
+    _accNumber =
+        TextEditingController(text: widget.bankDetail[0]!.accountNumber);
+    _routingNumber =
+        TextEditingController(text: widget.bankDetail[0]!.routingNumber);
+    _wireTransferNumber =
+        TextEditingController(text: widget.bankDetail[0]!.wireTransferNumber);
+    _sortCode = TextEditingController(text: widget.bankDetail[0]!.sortCode);
+    _bankcode = TextEditingController(text: widget.bankDetail[0]!.bankCode);
+    _branchCode = TextEditingController(text: widget.bankDetail[0]!.branchCode);
+    _ifscCode = TextEditingController(text: widget.bankDetail[0]!.ifscCode);
+    _acceptEUR = TextEditingController(text: widget.bankDetail[0]!.acceptEur);
+    _latest = TextEditingController(text: widget.bankDetail[0]!.st);
+  }
+
   String icValue = "Personal";
   List<String> icList = [
     "Personal",
@@ -124,7 +194,7 @@ class _MyPaymentsScreenState extends State<MyPaymentsScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
-                 [
+                [
                   DropdownButton<String>(
                     itemHeight: 72,
                     alignment: Alignment.centerLeft,
@@ -163,17 +233,19 @@ class _MyPaymentsScreenState extends State<MyPaymentsScreen> {
                     ).toList(),
                   ),
                   const SizedBox(height: 8),
-                  const TextField(
-                    decoration: InputDecoration(
+                  TextField(
+                    controller: _bankCountry,
+                    decoration: const InputDecoration(
                       label: Text("Bank Country"),
                       border: OutlineInputBorder(),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const TextField(
-                    decoration: InputDecoration(
+                  TextField(
+                    controller: _accountCurrency,
+                    decoration: const InputDecoration(
                       label: Text("Account Currency"),
-                      border:  OutlineInputBorder(),
+                      border: OutlineInputBorder(),
                     ),
                   ),
                 ],
@@ -196,37 +268,42 @@ class _MyPaymentsScreenState extends State<MyPaymentsScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
-                const [
+                [
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _streetNumber,
+                    decoration: const InputDecoration(
                       label: Text("Street Number"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _moreAddress,
+                    decoration: const InputDecoration(
                       label: Text("More Address Detail (Optional)"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _city,
+                    decoration: const InputDecoration(
                       label: Text("City / Town"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _postalCode,
+                    decoration: const InputDecoration(
                       label: Text("Postal / Zip Code"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _country,
+                    decoration: const InputDecoration(
                       label: Text("Country"),
                       border: OutlineInputBorder(),
                     ),
@@ -251,163 +328,186 @@ class _MyPaymentsScreenState extends State<MyPaymentsScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
-                const [
+                [
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _bankName,
+                    decoration: const InputDecoration(
                       label: Text("Bank Name"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _bankSwift,
+                    decoration: const InputDecoration(
                       label: Text("Bank Swift"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _iban,
+                    decoration: const InputDecoration(
                       label: Text("IBAN"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _cityAddress,
+                    decoration: const InputDecoration(
                       label: Text("City Address"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _accTitle,
+                    decoration: const InputDecoration(
                       label: Text("Account Title"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _accType,
+                    decoration: const InputDecoration(
                       label: Text("Account Type"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _bankCountry,
+                    decoration: const InputDecoration(
                       label: Text("Bank Country"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _accountCurrency,
+                    decoration: const InputDecoration(
                       label: Text("Account Currency"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _streetNumber,
+                    decoration: const InputDecoration(
                       label: Text("Street Number"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _moreAddress,
+                    decoration: const InputDecoration(
                       label: Text("More Address Detail)"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _city,
+                    decoration: const InputDecoration(
                       label: Text("City Town"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _postalCode,
+                    decoration: const InputDecoration(
                       label: Text("Postal / Zip Code"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _country,
+                    decoration: const InputDecoration(
                       label: Text("Country"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _accHolderName,
+                    decoration: const InputDecoration(
                       label: Text("Account Holder Name"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _accNumber,
+                    decoration: const InputDecoration(
                       label: Text("Account Number"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _routingNumber,
+                    decoration: const InputDecoration(
                       label: Text("Routing Number"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _wireTransferNumber,
+                    decoration: const InputDecoration(
                       label: Text("Wire Transfer Number"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _sortCode,
+                    decoration: const InputDecoration(
                       label: Text("Sort Code"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _bankcode,
+                    decoration: const InputDecoration(
                       label: Text("Bank Code"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _branchCode,
+                    decoration: const InputDecoration(
                       label: Text("Branch Code"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _ifscCode,
+                    decoration: const InputDecoration(
                       label: Text("IFSC Code"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _acceptEUR,
+                    decoration: const InputDecoration(
                       label: Text("Accept Eur Transactions?"),
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _latest,
+                    decoration: const InputDecoration(
                       label: Text("Latest"),
                       border: OutlineInputBorder(),
                     ),

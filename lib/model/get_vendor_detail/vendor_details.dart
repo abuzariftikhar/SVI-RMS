@@ -36,7 +36,7 @@ class VendorDetails {
   final List<Skill?> skills;
   final List<Tool?> tools;
 
-    factory VendorDetails.fromJson(Map<String, dynamic> json) =>
+  factory VendorDetails.fromJson(Map<String, dynamic> json) =>
       _$VendorDetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$VendorDetailsToJson(this);

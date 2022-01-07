@@ -23,7 +23,6 @@ class MyAttachmentsScreen extends StatefulWidget {
 class _MyAttachmentsScreenState extends State<MyAttachmentsScreen> {
   @override
   Widget build(BuildContext context) {
-    print(widget.certificates.length);
     return Scaffold(
       body: Consumer<ServicesBloc>(
         builder: (context, value, _) {

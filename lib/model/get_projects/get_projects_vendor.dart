@@ -1,77 +1,75 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'get_projects_vendor.g.dart';
 
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+class ProjectDetail {
+  ProjectDetail({
+    required this.id,
+    required this.projectName,
+    required this.clientLocation,
+    required this.sameScope,
+    required this.site,
+    required this.scope,
+    required this.isInterested,
+    required this.referrenceId,
+    required this.campaignEndDate,
+    required this.sendToSsdc,
+    required this.ssdcSeenSend,
+    required this.ssdcApproval,
+    required this.ssdcRejectionComment,
+    required this.approvalSsdcNotif,
+    required this.sendToSdm,
+    required this.sdmApproval,
+    required this.approvalSdmNotif,
+    required this.sdmRejectionComment,
+    required this.status,
+    required this.addedBy,
+    required this.postedDate,
+    required this.retainerProjectId,
+    required this.retainerType,
+    required this.sdmActivityNew,
+    required this.tools,
+    required this.description,
+    required this.category,
+    required this.location,
+    required this.skills,
+    required this.startDateTime,
+    required this.endDateTime,
+  });
+  late final String id;
+  late final String projectName;
+  late final String clientLocation;
+  late final String sameScope;
+  late final String site;
+  late final String scope;
+  late final String isInterested;
+  late final String referrenceId;
+  late final String campaignEndDate;
+  late final String sendToSsdc;
+  late final String ssdcSeenSend;
+  late final String? ssdcApproval;
+  late final String? ssdcRejectionComment;
+  late final String approvalSsdcNotif;
+  late final String sendToSdm;
+  late final String sdmApproval;
+  late final String approvalSdmNotif;
+  late final String? sdmRejectionComment;
+  late final String status;
+  late final String addedBy;
+  late final String postedDate;
+  late final String? retainerProjectId;
+  late final String? retainerType;
+  late final String? sdmActivityNew;
+  late final String tools;
+  late final String description;
+  late final String category;
+  late final String location;
+  late final String skills;
+  late final String startDateTime;
+  late final String endDateTime;
 
-// import 'dart:convert';
+  factory ProjectDetail.fromJson(Map<String, dynamic> json) =>
+      _$ProjectDetailFromJson(json);
 
-// Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
-
-// String welcomeToJson(Welcome data) => json.encode(data.toJson());
-
-// class Welcome {
-//   Welcome({
-//     required this.the0,
-//     required this.the1,
-//     required this.the2,
-//     required this.the3,
-//     required this.the4,
-//     required this.the5,
-//     required this.code,
-//     required this.status,
-//   });
-
-//   The0 the0;
-//   The0 the1;
-//   The0 the2;
-//   The0 the3;
-//   The0 the4;
-//   The0 the5;
-//   int code;
-//   String status;
-
-//   factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
-//         the0: The0.fromJson(json["0"]),
-//         the1: The0.fromJson(json["1"]),
-//         the2: The0.fromJson(json["2"]),
-//         the3: The0.fromJson(json["3"]),
-//         the4: The0.fromJson(json["4"]),
-//         the5: The0.fromJson(json["5"]),
-//         code: json["code"],
-//         status: json["status"],
-//       );
-
-//   Map<String, dynamic> toJson() => {
-//         "0": the0.toJson(),
-//         "1": the1.toJson(),
-//         "2": the2.toJson(),
-//         "3": the3.toJson(),
-//         "4": the4.toJson(),
-//         "5": the5.toJson(),
-//         "code": code,
-//         "status": status,
-//       };
-// }
-
-// class The0 {
-//   The0({
-//     required this.projectDetail,
-//     required this.asPId,
-//     required this.locationId,
-//   });
-
-//   Map<String, String> projectDetail;
-//   String asPId;
-//   String locationId;
-
-//   factory The0.fromJson(Map<String, dynamic> json) => The0(
-//         projectDetail: Map.from(json["project_detail"])
-//             .map((k, v) => MapEntry<String, String>(k, v)),
-//         asPId: json["as_p_id"],
-//         locationId: json["location_id"],
-//       );
-
-//   Map<String, dynamic> toJson() => {
-//         "project_detail": Map.from(projectDetail)
-//             .map((k, v) => MapEntry<String, dynamic>(k, v)),
-//         "as_p_id": asPId,
-//         "location_id": locationId,
-//       };
-// }
+  Map<String, dynamic> toJson() => _$ProjectDetailToJson(this);
+}

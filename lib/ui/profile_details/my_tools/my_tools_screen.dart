@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sv_rms_mobile/blocs/services_bloc.dart';
+import 'package:sv_rms_mobile/model/get_vendor_detail/tool/tool.dart';
 
 class MyToolsScreen extends StatefulWidget {
-  const MyToolsScreen({Key? key}) : super(key: key);
+  final List<Tool?> tool;
+  const MyToolsScreen({
+    Key? key,
+    required this.tool,
+  }) : super(key: key);
   static const String route = "toolsScreen";
   @override
   _MyToolsScreenState createState() => _MyToolsScreenState();
@@ -11,68 +18,45 @@ class _MyToolsScreenState extends State<MyToolsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              slivers: [
-                const SliverAppBar(
-                  pinned: true,
-                  centerTitle: true,
-                  title: Text(
-                    "Tools",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
+      body: Consumer<ServicesBloc>(builder: (context, value, _) {
+        return CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            const SliverAppBar(
+              pinned: true,
+              centerTitle: true,
+              title: Text(
+                "Tools",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SliverToBoxAdapter(
+              child: AdvanceToolsTile(
+                label: "End User Computing",
+                status: "Incomplete",
+              ),
+            ),
+            const SliverToBoxAdapter(
+              child: Divider(),
+            ),
+            SliverPadding(
+              padding: const EdgeInsets.all(16.0),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                    return ToolsTile(
+                      isAcheived: true,
+                      //  label: "Laptop Chargers",
+                      label: widget.tool[index]!.name ?? "",
+                    );
+                  },
+                  childCount: widget.tool.length,
                 ),
-                SliverPadding(
-                  padding: const EdgeInsets.all(16.0),
-                  sliver: SliverList(
-                    delegate: SliverChildListDelegate(
-                      [
-                        const AdvanceToolsTile(
-                          label: "End User Computing",
-                          status: "Incomplete",
-                        ),
-                        const Divider(),
-                        const ToolsTile(
-                          isAcheived: true,
-                          //  label: "Laptop Chargers",
-                          label: "snapshot.data!.tools![0].name",
-                        ),
-                        const ToolsTile(
-                          isAcheived: true,
-                          // label: "Any Smart Phone with Internet and Camera",
-                          label: "snapshot.data!.tools![1].name",
-                        ),
-                        const ToolsTile(
-                          isAcheived: true,
-                          // label: "Notepad",
-                          label: "snapshot.data!.tools![2].name",
-                        ),
-                        const ToolsTile(
-                          isAcheived: false,
-                          label: "Windows Laptop",
-                          //label: snapshot.data!.tools![3].name,
-                        ),
-                        const ToolsTile(
-                          isAcheived: false,
-                          label: "Basic Screw Driver Set",
-                          //label: snapshot.data!.tools![4].name,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
+              ),
+            ),
+          ],
+        );
+      }),
     );
   }
 }
