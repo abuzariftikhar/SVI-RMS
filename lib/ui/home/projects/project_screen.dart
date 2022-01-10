@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:sv_rms_mobile/blocs/services_bloc.dart';
+import 'package:sv_rms_mobile/model/get_projects/project.dart';
 import 'package:sv_rms_mobile/ui/home/projects/project_screen_store.dart';
 import 'package:sv_rms_mobile/ui/home/projects/widgets/project_tile.dart';
 import 'package:sv_rms_mobile/utils/app_theme.dart';
@@ -17,7 +18,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ServicesBloc>(builder: (context, value, _) {
-      return FutureBuilder(
+      return FutureBuilder<List<Project>>(
           future: value.getProjectDetail("2128"),
           builder: (context, snapshot) {
             return CustomScrollView(
@@ -67,7 +68,13 @@ class _ProjectScreenState extends State<ProjectScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   sliver: SliverList(
                     delegate: SliverChildBuilderDelegate(
-                      (context, index) => const ProjectTile(),
+                      (context, index) {
+                        final Project _project = snapshot.data![index];
+                        return ProjectTile(
+                          project: _project,
+                        );
+                      },
+                      childCount: snapshot.data?.length,
                     ),
                   ),
                 ),

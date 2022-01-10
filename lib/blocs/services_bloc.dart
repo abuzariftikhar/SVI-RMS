@@ -65,9 +65,7 @@ class ServicesBloc extends ChangeNotifier {
         _index--;
       }
 
-      for (Project element in _list) {
-        print(element.projectDetail!.projectName);
-      }
+      return _list;
 
       // print(projectMap.values.toString());
       // Project.fromJson(response.data);

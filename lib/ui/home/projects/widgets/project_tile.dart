@@ -1,11 +1,15 @@
 import 'package:cupertino_rounded_corners/cupertino_rounded_corners.dart';
 import 'package:flutter/material.dart';
+import 'package:sv_rms_mobile/model/get_projects/project.dart';
 import 'package:sv_rms_mobile/ui/bid_now/bid_now_screen.dart';
 import 'package:sv_rms_mobile/ui/project_details/project_details_screen.dart';
 
 class ProjectTile extends StatelessWidget {
-  const ProjectTile({Key? key}) : super(key: key);
-
+  const ProjectTile({
+    Key? key,
+    required this.project,
+  }) : super(key: key);
+  final Project project;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,7 +22,7 @@ class ProjectTile extends StatelessWidget {
         shape: SquircleBorder(radius: BorderRadius.circular(24.0)),
         child: InkWell(
           onTap: () {
-            Navigator.pushNamed(context, ProjectDetailsScreen.route);
+            // Navigator.push(context, ProjectDetailsScreen.route);
           },
           child: Padding(
             padding: const EdgeInsets.all(12.0),
@@ -32,9 +36,9 @@ class ProjectTile extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.55,
-                      child: const Text(
-                        "NIC Card Replacement 13 Oct France",
-                        style: TextStyle(
+                      child: Text(
+                        project.projectDetail!.projectName ?? "No Name",
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w800,
                           color: Colors.green,
