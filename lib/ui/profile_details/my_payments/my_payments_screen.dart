@@ -76,6 +76,7 @@ class _MyPaymentsScreenState extends State<MyPaymentsScreen> {
     _ifscCode = TextEditingController(text: widget.bankDetail[0]!.ifscCode);
     _acceptEUR = TextEditingController(text: widget.bankDetail[0]!.acceptEur);
     _latest = TextEditingController(text: widget.bankDetail[0]!.st);
+    super.initState();
   }
 
   String icValue = "Personal";
